@@ -1,0 +1,6 @@
+.horcontainer{
+    display: flex;
+    //justify-content: space-between; /* Opcional: controla o espaçamento entre os blocos */
+    //height: 100vh; /* Faz com que o container ocupe toda a altura da tela */
+    flex-direction: row;//column; /* Organiza os blocos verticalmente */
+}

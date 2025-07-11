@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<article class="post">
+
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+    </header>
+  
+    <div class="post-content">
+      <!-- Informação/Descrição do item -->
+      <div class="horcontainer">
+        <div>
+          <h2>Descrição</h2>
+          {{ page.description | markdownify }}
+        </div>
+        <div>
+          <h2>Informações</h2>
+          <strong>Cargo:</strong> {{ page.role }}<br />
+          <strong>Prazo:</strong> {{ page.frame_time }} meses<br />
+          <strong>Ano Desenvolvido:</strong> {{ page.year }}<br />
+          <strong>Engine:</strong> {{ page.engine }}<br />
+          <strong>Linguagem:</strong> {{ page.prog_language }}<br />
+          {% if page.web_pages.size == 1 %}
+            <a href="{{ page.web_pages[0] }}" target="_blank">
+              <strong>Página do {{ page.web_page_types[0] }}</strong>
+            </a>
+          {% elsif page.web_pages.size > 1 %}
+            {% assign last_index = page.web_pages.size | minus: 1 %}
+            {% assign index_range = (0..last_index) %}
+            {% for i in index_range %}
+              {% if i > 0 %}
+                |
+              {% endif %}
+              <a href="{{ page.web_pages[i] }}" target="_blank">
+                <strong>{{ page.web_page_types[i] }}</strong>
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+  
+      <!-- Conteúdo do item -->
+      <hr />
+      {{ content }}
+
+    </div>
+  
+</article>

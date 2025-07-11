@@ -1,1 +1,18 @@
-theme: cvless
+title: Sam Cavalheiro
+iconURL: /assets/default-icon.png
+theme: jekyll-theme-leaf
+
+permalink: :slug
+
+social:
+  twitter: NONE
+  github: sam-cavalheiro
+  itchio: samcavalheiro
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
+
+### comments & analytics
+hyvor_talk_website_id: YOUR_WEBSITE_ID
+google_analytics: UA-NNNNNNNN-N
