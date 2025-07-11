@@ -10,6 +10,7 @@ social:
   itchio: samcavalheiro
 
 plugins:
+ - jekyll-theme-leaf
  - jekyll-feed
  - jekyll-seo-tag
 
