@@ -11,4 +11,12 @@ Desde criança me considerei entusiasta pela área de desenvolvimento de jogos. 
 Nesta página, há todos projetos de jogos nos quais atuei como programador. Caso deseje obter mais informações, entre em contato comigo ou acesse meu currículo!
 
 # Portfólio
+
 Jogrinhos
+
+- [Kristian: Frango Cabuloso](portfolio/kristian-frango-cabuloso)
+- [Invasão: O Último Ciclo](portfolio/invasao-o-ultimo-ciclo)
+- [Eris Online](portfolio/eris-online)
+- [Deliverracer](portfolio/deliverracer)
+- [Time KickerZ](portfolio/time-kickerz)
+- [Kristian: Frango Cabuloso (Online)](porftoflio/kristian-frango-cabuloso-online)
