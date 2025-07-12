@@ -19,4 +19,4 @@ Jogrinhos
 - [Eris Online](portfolio/eris-online)
 - [Deliverracer](portfolio/deliverracer)
 - [Time KickerZ](portfolio/time-kickerz)
-- [Kristian: Frango Cabuloso (Online)](porftoflio/kristian-frango-cabuloso-online)
+- [Kristian: Frango Cabuloso (Online)](portfolio/kristian-frango-cabuloso-online)
