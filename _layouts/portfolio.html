@@ -1,49 +1,51 @@
 ---
 layout: default
 ---
-<article class="post">
 
-    <header class="post-header">
-      <h1 class="post-title">{{ page.title | escape }}</h1>
-    </header>
-  
-    <div class="post-content">
-      <!-- Informação/Descrição do item -->
-      <div class="horcontainer">
-        <div>
-          <h2>Descrição</h2>
-          {{ page.description | markdownify }}
-        </div>
-        <div>
-          <h2>Informações</h2>
-          <strong>Cargo:</strong> {{ page.role }}<br />
-          <strong>Prazo:</strong> {{ page.frame_time }} meses<br />
-          <strong>Ano Desenvolvido:</strong> {{ page.year }}<br />
-          <strong>Engine:</strong> {{ page.engine }}<br />
-          <strong>Linguagem:</strong> {{ page.prog_language }}<br />
-          {% if page.web_pages.size == 1 %}
-            <a href="{{ page.web_pages[0] }}" target="_blank">
-              <strong>Página do {{ page.web_page_types[0] }}</strong>
-            </a>
-          {% elsif page.web_pages.size > 1 %}
-            {% assign last_index = page.web_pages.size | minus: 1 %}
-            {% assign index_range = (0..last_index) %}
-            {% for i in index_range %}
-              {% if i > 0 %}
-                |
+<div class="row">
+  <div class="col-md-8">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+      </header>
+
+      <div class="post-portfolio-info">
+        <table>
+          <tr>
+            <td><h2>Descrição</h2></td>
+            <td><h2>Informações</h2></td>
+          </tr>
+          <tr>
+            <td>{{ page.description | markdownify }}</td>
+            <td>
+              <strong>Cargo:</strong> {{ page.role }}<br />
+              <strong>Prazo:</strong> {{ page.frame_time }} meses<br />
+              <strong>Ano Desenvolvido:</strong> {{ page.year }}<br />
+              <strong>Engine:</strong> {{ page.engine }}<br />
+              <strong>Linguagem:</strong> {{ page.prog_language }}<br />
+              {% if page.web_page_types.size > 1 %}
+                {% for web_page_url in page.web_pages %}
+                  {% if forloop.index0 > 0 %}
+                    |
+                  {% endif %}
+                  <a href="{{ web_page_url }}" target="_blank">
+                    <strong>{{ page.web_page_types[forloop.index0] }}</strong>
+                  </a>
+                {% endfor %}
+              {% else %}
+                <a href="{{ page.web_pages[0] }}" target="_blank">
+                  <strong>Página do {{ page.web_page_types[0] }}</strong>
+                </a>
               {% endif %}
-              <a href="{{ page.web_pages[i] }}" target="_blank">
-                <strong>{{ page.web_page_types[i] }}</strong>
-              </a>
-            {% endfor %}
-          {% endif %}
-        </div>
+            </td>
+          </tr>
+        </table>
       </div>
-  
-      <!-- Conteúdo do item -->
-      <hr />
-      {{ content }}
 
-    </div>
-  
-</article>
+      <div class="post-content">{{ content }}</div>
+    </article>
+  </div>
+  {% include sidebar.html %}
+</div>
+
+{% include fb-script.html %}

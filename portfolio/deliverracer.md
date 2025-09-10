@@ -1,6 +1,8 @@
 ---
 title: "Deliverracer"
 layout: portfolio
+category: Graduação
+order: 3
 media_paths: https://www.google.com
 role: Programador
 frame_time: 4
@@ -8,7 +10,6 @@ team_size: 7
 year: 2021
 engine: Godot
 prog_language: GDScript
-category: Graduação
 web_pages: [ https://samcavalheiro.itch.io/deliverracer ]
 web_page_types: [ itch.io ]
 

@@ -1,6 +1,8 @@
 ---
 title: "Kristian: Frango Cabuloso (Online)"
 layout: portfolio
+category: Graduação
+order: 5
 media_paths: https://www.google.com
 role: Programador
 frame_time: 4
@@ -8,7 +10,6 @@ team_size: 5
 year: 2021
 engine: Unity
 prog_language: C#
-category: Graduação
 web_pages: [ https://samcavalheiro.itch.io/tcp6-kristian-frango-cabuloso ]
 web_page_types: [ itch.io ]
 
@@ -2091,7 +2092,7 @@ Todos os **dados** são alterados durante a jogatina, quando o jogador faz açõ
 Para determinar a **área onde o jogador passou mais tempo** na partida (Dado: ```"Area onde passou mais tempo"``` \| Variável: ```string mostTimeAreaName```), foi necessário espalhar diversas áreas pelo cenário contendo o nome da área.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-areas.mp4" }}" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-areas.mp4" controls loop autoplay muted></video>
 </p>
 
 ```cs

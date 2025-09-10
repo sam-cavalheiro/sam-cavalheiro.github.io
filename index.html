@@ -1,0 +1,155 @@
+---
+layout: default
+---
+
+<h1>Biografia</h1>
+
+<p>Oi, me chamo Sam Cavalheiro! Sou programador de jogos do Rio de Janeiro, tenho 27 anos. Sou recém formado em <strong>Tecnologia em Jogos Digitais</strong> pelo <strong>IFRJ Campus Eng. Paulo de Frontin</strong>, possuindo {NUM_PROJETOS} projetos de jogos realizados durante a graduação.</p>
+
+<p>Desde criança me considerei entusiasta pela área de desenvolvimento de jogos. Esse mesmo entusiasmo continua sendo aplicado até os dias de hoje. Tenho muita curiosidade quando o assunto é tecnologia e programação, sempre buscando aprender as melhores soluções possíveis para os determinados contextos.</p>
+
+<p>Nesta página, há todos projetos de jogos nos quais atuei como programador. Caso deseje obter mais informações, entre em contato comigo ou acesse meu currículo!</p>
+
+<h1>Portfólio</h1>
+
+{% assign categories = "" | split: "" %}
+{% assign pages_categories_indexes = "" | split: "" %}
+{% assign pages_orders = "" | split: "" %}
+{% for page in site.pages %}
+  {% assign category_index = -1 %}
+  {% assign order = -1 %}
+  {% if page.layout == "portfolio" %}
+    {% for category in categories %}
+      {% if category == page.category %}
+        {% assign category_index = forloop.index0 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if category_index == -1 %}
+      {% assign categories = categories | push: page.category %}
+      {% assign category_index = categories.size | minus: 1 %}
+    {% endif %}
+    {% assign order = page.order %}
+  {% endif %}
+  {% assign pages_categories_indexes = pages_categories_indexes | push: category_index %}
+  {% assign pages_orders = pages_orders | push: order %}
+{% endfor %}
+
+{% assign ordered_pages = "" | split: "" %}
+{% for i in pages_orders %}
+  {% assign smallest_order = 9999 %}
+  {% assign smallest_page = -1 %}
+  {% for page_order in pages_orders %}
+    {% assign already_ordered = false %}
+    {% for page_index in ordered_pages %}
+      {% if page_index == forloop.parentloop.index0 %}
+        {% assign already_ordered = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if already_ordered == false and page_order < smallest_order %}
+      {% assign smallest_order = page_order %}
+      {% assign smallest_page = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+  {% if smallest_page >= 0 %}
+    {% assign ordered_pages = ordered_pages | push: smallest_page %}
+  {% endif %}
+{% endfor %}
+
+<div class="home py-4 py-md-5">
+  {% for category in categories %}
+    <h2>{{ category }}</h2>
+    <div class="row">
+        {% for page_index in ordered_pages  %}
+          {% if pages_categories_indexes[page_index] == forloop.parentloop.index0 %}
+            {% assign page = site.pages[page_index] %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <a href="{{ page.url | prepend: site.baseurl }}" class="index-anchor">
+                  <div class="card rounded overflow-hidden">  
+                    <div class="image">
+                      {% if page.image %}
+                      <img src="{{page.image | relative_url}}" alt="{{page.title}}">
+                      {% endif %}
+                      <div class="card-body">
+                        <h2 class="panel-title">{{ page.title }}</h2>
+                        <p class="p-0 my-1 mx-0"><span class="post-meta"><small>{{ post.date | date: "%b %-d, %Y" }}</small></span></p>
+                        <p>{{ page.description | markdownify }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="home py-4 py-md-5">
+  <div class="row">
+    {% for post in paginator.posts %}   
+      <div class="col-12 col-md-6 col-lg-4">
+       <a href="{{ post.url | prepend: site.baseurl }}" class="index-anchor">
+        <div class="card rounded overflow-hidden">  
+          <div class="image">
+            {% if post.image %}
+            <img src="{{post.image | relative_url}}" alt="{{post.title}}">
+            {% endif %}
+            <div class="card-body">
+              <h2 class="panel-title">{{ post.title | truncate: 25 }}</h2>
+              <p class="p-0 my-1 mx-0"><span class="post-meta"><small>{{ post.date | date: "%b %-d, %Y" }}</small></span></p>
+               <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 150 }}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+    {% endfor %}
+  </div>
+</div> 
+    
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+        {% if paginator.total_pages > 1 %}
+        <ul class="pagination">
+          {% if paginator.previous_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+          {% endif %}
+
+          {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+              <li class="page-item active">
+                <span class="page-link">{{ page }}</span>
+              </li>
+            {% elsif page == 1 %}
+              <li class="page-item">
+                <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+            {% endif %}
+          {% endfor %}
+
+          {% if paginator.next_page %}
+            <li class="page-item">
+              <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item" disabled>
+              <span class="page-link">Next</span>
+            </li>
+          {% endif %}
+          </ul>
+        {% endif %}
+    </div>
+  </div>
+
+</div>

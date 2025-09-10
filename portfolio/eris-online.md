@@ -1,6 +1,8 @@
 ---
 title: "Eris Online"
 layout: portfolio
+category: Graduação
+order: 2
 media_paths: https://www.google.com
 role: Programador
 frame_time: 4
@@ -8,7 +10,6 @@ team_size: 25
 year: 2020
 engine: Unity
 prog_language: C#
-category: Graduação
 web_pages: [ https://infinity-door.itch.io/eris-online ]
 web_page_types: [ itch.io ]
 

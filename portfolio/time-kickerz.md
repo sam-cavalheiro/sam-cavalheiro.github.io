@@ -1,6 +1,8 @@
 ---
 title: "Time KickerZ"
 layout: portfolio
+category: Graduação
+order: 4
 media_paths: https://www.google.com
 role: Programador
 frame_time: 4
@@ -8,7 +10,6 @@ team_size: 8
 year: 2021
 engine: Unity
 prog_language: C#
-category: Graduação
 web_pages: [ https://jaimeadalid.itch.io/time-kickerz ]
 web_page_types: [ itch.io ]
 

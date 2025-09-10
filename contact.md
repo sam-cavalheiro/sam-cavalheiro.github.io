@@ -1,10 +1,9 @@
 ---
-title: Contact
 layout: page
+title: Contact
+permalink: /contact/
 ---
 
-You can always contact the creator of this theme via [Twitter](https://twitter.com/_SupunKavinda).
+Insert your contact details or a contact form here.
 
-If you need help with Jekyll, ask questions on [Jekyll Talk](https://talk.jekyllrb.com/).
-
-(Change this by editing `contact.md` file)
+Read [How to create a form in Jekyll site](http://blog.webjeda.com/jekyll-contact-form/){: target="\_blank"} to implement using formspree.

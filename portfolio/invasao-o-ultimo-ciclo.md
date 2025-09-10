@@ -1,6 +1,8 @@
 ---
 title: "Invasão: O Último Ciclo"
 layout: portfolio
+category: Graduação
+order: 1
 media_paths: https://www.youtube.com/watch?v=5ZZnn_CNmGU, /assets/portfolio/invasao-o-ultimo-ciclo-media-0.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-1.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-2.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-3.png
 role: Programador
 frame_time: 4
@@ -8,7 +10,6 @@ team_size: 12
 year: 2019
 engine: Unity
 prog_language: C#
-category: Graduação
 web_pages: [ https://samcavalheiro.itch.io/invasao-o-utimo-ciclo ]
 web_page_types: [ itch.io ]
 
