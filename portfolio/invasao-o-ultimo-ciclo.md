@@ -129,7 +129,7 @@ Os **inimigos** no jogo realizavam uma curva muito lenta ao andar, e isso não e
 <video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-movimentacao-inimigos.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-## Buffs/Debuffs em Inimigos
+## Buffs e Debuffs em Inimigos
 
 Os **inimigos** podem armazenar **buffs/debuffs** (status positivos/negativos) a partir de dano recebido por uma torre ou a partir de alguma habilidade passiva do próprio **inimigo**.
 

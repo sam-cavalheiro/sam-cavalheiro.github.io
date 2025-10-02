@@ -10,27 +10,86 @@
     {% endif %}
   </div>
 
+  {% if page.layout == "portfolio" %}
+  <div class="m10 topics">
+    <h2>Conteúdo</h2>
+    <ul>
+      {% assign fragments = page.content | newline_to_br | split: "<br />" %}
+      {% assign started_block = false %}
+      {% for fragment in fragments %}
+        {% assign heading_level = -1 %}
+
+        {% if forloop.first == true %}
+          {% assign slice_index = 0 %}
+        {% else %}
+          {% assign slice_index = 1 %}
+        {% endif %}
+        {% assign slice = fragment | slice: slice_index, 3 %}
+        {% if slice == "```" %}
+          {% if started_block == true %}
+            {% assign started_block = false %}
+          {% else %}
+            {% assign started_block = true %}
+          {% endif %}
+        {% endif %}
+
+        {% if started_block == true %}
+          {% continue %}
+        {% endif %}
+
+        {% for i in (0..2) %}
+          {% if forloop.parentloop.first == true %}
+            {% assign slice_index = i %}
+          {% else %}
+            {% assign slice_index = i | plus: 1 %}
+          {% endif %}
+          {% assign slice = fragment | slice: slice_index %}
+          {% if slice == '#' %}
+            {% assign heading_level = i %}
+          {% else %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if heading_level == -1 %}
+          {% continue %}
+        {% endif %}
+
+        {% assign hash_to_remove = "#" %}
+        {% for i in (1..heading_level) %}
+          {% assign hash_to_remove = hash_to_remove | append: '#' %}
+          <ul>
+        {% endfor %}
+        {% assign section_at_menu =  %}
+        <li><a href="#{{ fragment | slugify }}" class="toc-link">{{ fragment | remove_first: hash_to_remove | markdownify | remove: "<p>" | remove: "</p>" }}</a></li>
+        {% for i in (1..heading_level) %}
+          </ul>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% comment %}
   {% if page.description %}
   <div class="m10 recent">
     <h2>Descrição</h2>
-
     {{ page.description | markdownify }}
   </div>
   {% endif %}
+  {% endcomment %}
 
   {% if page.id and site.posts.size > 0 %}
   <div class="mt10 recent">
     <h2>Recent articles</h2>
     <ul>
       {% for post in site.related_posts limit:3 %}
-
       <li>
         <p>
           <a href="{{ post.url  | relative_url }}">{{ post.title }}</a
           ><small>&nbsp;&nbsp;{{ post.date | date_to_string }}</small>
         </p>
       </li>
-
       {% endfor %}
     </ul>
   </div>

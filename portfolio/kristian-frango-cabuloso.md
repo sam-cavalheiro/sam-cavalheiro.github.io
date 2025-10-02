@@ -48,7 +48,7 @@ O jogador morre ao encostar no inimigo.
 <video src="{{ "/assets/portfolio/kristian-frango-cabuloso-enemies.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-# Subir/Descer Escadas
+# Subir e Descer Escadas
 
 Foi desafiador criar este sistema, pois eu não conhecia uma forma de detectar quando o jogador sairia da **escada** de maneira eficaz. Da maneira mais simples, apenas utilizando uma detecção de saída de colisão, o jogador precisaria sair por completo da escada, pois seu colisor era grande demais para detectar a saída da escada. Foi aí que pensei em criar um fantasma do jogador que serviria apenas para **detectar saída da escada**.
 

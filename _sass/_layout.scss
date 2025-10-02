@@ -115,6 +115,19 @@ footer {
   border: 1px solid $grey-color-light;
 }
 
+.topics {
+  position: fixed;
+  //padding: 10px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  border: 1px solid $grey-color-light;
+}
+
+.topics a.active {
+  font-weight: bold;
+  text-decoration-line: underline;
+}
+
 .post-img img {
   width: 100%;
 }

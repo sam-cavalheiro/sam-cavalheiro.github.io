@@ -36,13 +36,11 @@ Neste projeto, assumo a responsabilidade de programar um **jogo de tiro em prime
 
 Este projeto foi realizado durante a pandemia de Covid-19, sendo produzido remotamente devido ao lockdown. <!-- não tenho 100% de certeza -->
 
-Projeto desenvolvido para a disciplina **TCP VI** (Trabalho de Conclusão de Período VI) da graduação de **Jogos Digitais do IFRJ Campus Eng. Paulo de Frontin**. O **TCP VI** vigente consistia no dever de produzir e entregar um **jogo de plataforma especial*** e um **artigo científico** ao final da disciplina na graduação.
+Projeto desenvolvido para a disciplina **TCP VI** (Trabalho de Conclusão de Período VI) da graduação de **Jogos Digitais do IFRJ Campus Eng. Paulo de Frontin**. O **TCP VI** vigente consistia no dever de produzir e entregar um **jogo de plataforma especial**[^1] e um **artigo científico** ao final da disciplina na graduação.
 
 A equipe do projeto conta com 5 membros, sendo eu, o **único programador**. [Os créditos podem ser acessados na página do itch.io](https://samcavalheiro.itch.io/tcp6-kristian-frango-cabuloso){:target="_blank"}.
 
 Este foi meu primeiro projeto com **coleta de telemetria** (inclusive com uso do **Unity Analytics**) e utilizando especificamente o **Photon Bolt**.
-
-<small>\* Plataforma especial com uso de tecnologias como VR, giroscópio, telemetria, dentre outras possibilidades na aplicação de jogos.</small>
 
 # Conectividade Online com Photon Bolt
 
@@ -950,7 +948,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
 
 O **sistema de vida** do jogo possibilita a um jogador, inimigo ou NPC **receber dano, morrer, regenerar-se e ser reanimado**. Isso sincronizando **online** :).
 
-## Dano/Morte
+## Dano e Morte
 
 <p align="center">
 <video src=" {{ "/assets/portfolio/kristian-frango-cabuloso-online-matar-morrer.mp4" }}" height="270" controls loop autoplay muted></video>
@@ -1279,7 +1277,7 @@ public class PlayerInputHandler : MonoBehaviour
 }
 ```
 
-Quando o jogador passa muito tempo **debilitado**, sem ter sucesso em ser **reanimado por outro jogador**: troca seu estado para "nada" (```ReviveState.None```); desliga a *flag* **online** que indica que está morrendo (pois agora morreu); e destrói seu objeto pelo **Photon Bolt** através do ```Health.Die()``` (abordo em [Dano/Morte](#danomorte)).
+Quando o jogador passa muito tempo **debilitado**, sem ter sucesso em ser **reanimado por outro jogador**: troca seu estado para "nada" (```ReviveState.None```); desliga a *flag* **online** que indica que está morrendo (pois agora morreu); e destrói seu objeto pelo **Photon Bolt** através do ```Health.Die()``` (abordo em [Dano e Morte](#dano-e-morte)).
 
 ```cs
 // ...
@@ -2340,3 +2338,7 @@ Devido ao fato deste sistema ter sido implementando próximo dos dias de entrega
 Para além de ter utilizado **Photon Bolt** e **coleta de dados com Unity Analytics** pela primeira vez, neste projeto, pude observar o quão importante pode ser o *play test* de outras pessoas. Muitos dados interessantes foram gerados para o artigo.
 
 Me propus a ser mais **proativo** neste projeto, o que trouxe um resultado que considero satisfatório. E novamente, a realização de testes se mostra muito necessário em muitos projetos, mas é importante principalmente em projetos que envolvem o lado mais humano: como um jogo de **multijogadores** (**online**) e com **coleta de dados dos jogadores**.
+
+# Notas
+
+[^1]: Plataforma especial com uso de tecnologias como VR, giroscópio, telemetria, dentre outras possibilidades na aplicação de jogos.
