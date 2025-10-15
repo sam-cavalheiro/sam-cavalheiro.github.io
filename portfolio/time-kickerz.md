@@ -3,7 +3,8 @@ title: "Time KickerZ"
 layout: portfolio
 category: Graduação
 order: 4
-media_paths: https://www.google.com
+media_paths: [ /assets/portfolio/time-kickerz-media-0.mp4, /assets/portfolio/time-kickerz-media-1.png, /assets/portfolio/time-kickerz-media-2.png, /assets/portfolio/time-kickerz-media-3.png, /assets/portfolio/time-kickerz-media-4.png, /assets/portfolio/time-kickerz-media-5.png, /assets/portfolio/time-kickerz-media-6.png ]
+media_thumbnail_paths: [ /assets/portfolio/time-kickerz-media-5.png ]
 role: Programador
 frame_time: 4
 team_size: 8

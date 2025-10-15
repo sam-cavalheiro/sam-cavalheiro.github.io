@@ -3,7 +3,8 @@ title: "Kristian: Frango Cabuloso"
 layout: portfolio
 category: Graduação
 order: 0
-media_paths: https://www.youtube.com/watch?v=aRbBsfYjupA, /assets/portfolio/kristian-frango-cabuloso-media-0.png, /assets/portfolio/kristian-frango-cabuloso-media-1.png
+media_paths: [ /assets/portfolio/kristian-frango-cabuloso-media-0.mp4, /assets/portfolio/kristian-frango-cabuloso-media-1.png, /assets/portfolio/kristian-frango-cabuloso-media-2.png ]
+media_thumbnail_paths: [ /assets/portfolio/kristian-frango-cabuloso-media-1.png ]
 role: Programador
 frame_time: 4
 team_size: 5

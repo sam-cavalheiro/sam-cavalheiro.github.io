@@ -3,7 +3,8 @@ title: "Kristian: Frango Cabuloso (Online)"
 layout: portfolio
 category: Graduação
 order: 5
-media_paths: https://www.google.com
+media_paths: [ /assets/portfolio/kristian-frango-cabuloso-online-uso-armas.mp4, /assets/portfolio/kristian-frango-cabuloso-online-debilitacao.mp4, /assets/portfolio/kristian-frango-cabuloso-online-coleta-armas.mp4, /assets/portfolio/kristian-frango-cabuloso-online-matar-morrer.mp4, /assets/portfolio/kristian-frango-cabuloso-online-pulo-inimigo.mp4 ]
+media_thumbnail_paths: [ /assets/portfolio/kristian-frango-cabuloso-online-thumbnail-0.png, /assets/portfolio/kristian-frango-cabuloso-online-thumbnail-1.png, /assets/portfolio/kristian-frango-cabuloso-online-thumbnail-2.png, /assets/portfolio/kristian-frango-cabuloso-online-thumbnail-3.png, /assets/portfolio/kristian-frango-cabuloso-online-thumbnail-4.png ]
 role: Programador
 frame_time: 4
 team_size: 5

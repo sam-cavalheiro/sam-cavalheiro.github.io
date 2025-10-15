@@ -3,7 +3,8 @@ title: "Invasão: O Último Ciclo"
 layout: portfolio
 category: Graduação
 order: 1
-media_paths: https://www.youtube.com/watch?v=5ZZnn_CNmGU, /assets/portfolio/invasao-o-ultimo-ciclo-media-0.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-1.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-2.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-3.png
+media_paths: [ /assets/portfolio/invasao-o-ultimo-ciclo-media-0.mp4, /assets/portfolio/invasao-o-ultimo-ciclo-media-1.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-2.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-3.png, /assets/portfolio/invasao-o-ultimo-ciclo-media-4.png ]
+media_thumbnail_paths: [ /assets/portfolio/invasao-o-ultimo-ciclo-media-1.png ]
 role: Programador
 frame_time: 4
 team_size: 12
