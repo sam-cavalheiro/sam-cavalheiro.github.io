@@ -15,6 +15,7 @@ layout: default
       {% if page.media_paths.size > 0 %}
         <div class="gallery">
           <div class="gallery-display" style="background-color: black;">
+            <div id="youtube-player" style="visibility: hidden;"></div>
             <img style="visibility: hidden;" />
             <video style="visibility: hidden;" onended="nextSlide()" controls></video>
           </div>
@@ -27,15 +28,11 @@ layout: default
             {% endif %}
             <img src="{{ media_src }}" id="thumbnail{{ forloop.index0 }}" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})" />
             {% assign slice_path = media_path | slice: -3, 3 | downcase %}
-            {% if slice_path == "mp4" %}
+            {% if slice_path != "png" and slice_path != "jpg" and slice_path != "bmp" and slice_path != "gif" %}
               <img class="gallery-thumbnail-play" src="/images/play.svg" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})"  />
             {% endif %}
           </div>
         {% endfor %}
-          <script>
-            init();
-            displayMedia("{{ page.media_paths[0] }}", 0);
-          </script>
         </div>
       {% endif %}
 
