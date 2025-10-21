@@ -122,4 +122,6 @@ function onYoutubePlayerStateChange(event) {
         clearTimeout(timeoutId);
         playedYoutubeFirstTime = true;
     }
+    if (event.data == YT.PlayerState.ENDED)
+        nextSlide();
 }
