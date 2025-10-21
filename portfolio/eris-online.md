@@ -3,7 +3,7 @@ title: "Eris Online"
 layout: portfolio
 category: Graduação
 order: 2
-media_paths: [ /assets/portfolio/eris-online-media-0.mp4, /assets/portfolio/eris-online-media-1.png, /assets/portfolio/eris-online-media-2.png, /assets/portfolio/eris-online-media-3.png, /assets/portfolio/eris-online-media-4.png, /assets/portfolio/eris-online-media-5.png, /assets/portfolio/eris-online-media-6.png, /assets/portfolio/eris-online-media-7.png, /assets/portfolio/eris-online-media-8.png ]
+media_paths: [ CjY80Qu6x0A, /assets/portfolio/eris-online-media-1.png, /assets/portfolio/eris-online-media-2.png, /assets/portfolio/eris-online-media-3.png, /assets/portfolio/eris-online-media-4.png, /assets/portfolio/eris-online-media-5.png, /assets/portfolio/eris-online-media-6.png, /assets/portfolio/eris-online-media-7.png, /assets/portfolio/eris-online-media-8.png ]
 media_thumbnail_paths: [ /assets/portfolio/eris-online-thumbnail-0.png ]
 role: Programador
 frame_time: 4
