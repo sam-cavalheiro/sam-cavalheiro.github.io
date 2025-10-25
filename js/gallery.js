@@ -1,3 +1,4 @@
+var displayGallery;
 var displayYoutube;
 var displayImg;
 var displayVideo;
@@ -8,6 +9,7 @@ var timeoutId = -1;
 var currentSlideIndex = -1;
 var playedVideoFirstTime = false;
 var playedYoutubeFirstTime = false;
+var isVisibleInScroll = false;
 
 
 var youtubeTag = document.createElement("script");
@@ -31,13 +33,17 @@ function onYouTubeIframeAPIReady() {
 }
 
 function init() {
+    displayGallery = document.getElementsByClassName("gallery-display")[0];
     displayYoutube = document.querySelector(".gallery-display iframe");
     displayImg = document.querySelector(".gallery-display img");
     displayVideo = document.querySelector(".gallery-display video");
 
     window.addEventListener("focus", onFocusWindow);
     window.addEventListener("blur", onUnfocusWindow);
+    window.addEventListener("scroll", onScroll);
     displayVideo.addEventListener("play", onPlayVideoFirstTime);
+
+    isVisibleInScroll = window.scrollY + window.innerHeight > displayGallery.offsetTop && window.scrollY < displayGallery.offsetTop + displayGallery.offsetHeight + 100;
 }
 
 function nextSlide() {
@@ -71,7 +77,7 @@ function displayMedia(mediaPath, index) {
 
         clearTimeout(timeoutId);
 
-        if (!document.hasFocus())
+        if (!document.hasFocus() || !isVisibleInScroll)
             youtubePlayer.pauseVideo();
         else if (!playedYoutubeFirstTime)
             timeoutId = setTimeout(nextSlide, 5000);
@@ -93,7 +99,7 @@ function displayMedia(mediaPath, index) {
 
             clearTimeout(timeoutId);
 
-            if (document.hasFocus())
+            if (document.hasFocus() && isVisibleInScroll)
                 timeoutId = setTimeout(nextSlide, 5000);
         }
         else if (extension == "mp4") {
@@ -105,7 +111,7 @@ function displayMedia(mediaPath, index) {
 
             clearTimeout(timeoutId);
 
-            if (displayVideo.paused && document.hasFocus())
+            if (displayVideo.paused && document.hasFocus() && isVisibleInScroll)
                 timeoutId = setTimeout(nextSlide, 5000);
         }
     }
@@ -117,15 +123,32 @@ function displayMedia(mediaPath, index) {
     currentSlideIndex = index;
 }
 
-function onFocusWindow() {
+function activateTimerDependingCurrentSlide() {
     if (displayImg.style.visibility == "visible" ||
     (!playedVideoFirstTime && displayVideo.style.visibility == "visible") ||
     (!playedYoutubeFirstTime && displayYoutube.style.visibility == "visible"))
         timeoutId = setTimeout(nextSlide, 5000);
 }
 
+function onFocusWindow() {
+    activateTimerDependingCurrentSlide();
+}
+
 function onUnfocusWindow() {
     clearTimeout(timeoutId);
+}
+
+function onScroll() {
+    if (window.scrollY + window.innerHeight > displayGallery.offsetTop && window.scrollY < displayGallery.offsetTop + displayGallery.offsetHeight + 100) {
+        if (!isVisibleInScroll) {
+            activateTimerDependingCurrentSlide();
+            isVisibleInScroll = true;
+        }
+    }
+    else {
+        clearTimeout(timeoutId);
+        isVisibleInScroll = false;
+    }
 }
 
 function onPlayVideoFirstTime() {
