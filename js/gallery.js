@@ -1,7 +1,12 @@
+var displayYoutube;
+var displayImg;
+var displayVideo;
+
 var youtubePlayer;
 
 var timeoutId = -1;
 var currentSlideIndex = -1;
+var playedVideoFirstTime = false;
 var playedYoutubeFirstTime = false;
 
 
@@ -26,7 +31,13 @@ function onYouTubeIframeAPIReady() {
 }
 
 function init() {
-    document.querySelector(".gallery-display video").addEventListener("play", onPlayVideoFirstTime);
+    displayYoutube = document.querySelector(".gallery-display iframe");
+    displayImg = document.querySelector(".gallery-display img");
+    displayVideo = document.querySelector(".gallery-display video");
+
+    window.addEventListener("focus", onFocusWindow);
+    window.addEventListener("blur", onUnfocusWindow);
+    displayVideo.addEventListener("play", onPlayVideoFirstTime);
 }
 
 function nextSlide() {
@@ -46,10 +57,6 @@ function displayMedia(mediaPath, index) {
     if (index == currentSlideIndex)
         return;
 
-    const displayYoutube = document.querySelector(".gallery-display iframe");
-    const displayImg = document.querySelector(".gallery-display img");
-    const displayVideo = document.querySelector(".gallery-display video");
-
     displayYoutube.style.visibility = "hidden";
     displayImg.style.visibility = "hidden";
     displayVideo.style.visibility = "hidden";
@@ -61,11 +68,12 @@ function displayMedia(mediaPath, index) {
 
         youtubePlayer.loadVideoById(mediaPath);
         displayYoutube.style.visibility = "visible";
-        //youtubePlayer.playVideo();
 
         clearTimeout(timeoutId);
 
-        if (!playedYoutubeFirstTime)
+        if (!document.hasFocus())
+            youtubePlayer.pauseVideo();
+        else if (!playedYoutubeFirstTime)
             timeoutId = setTimeout(nextSlide, 5000);
     }
     else { // Imagem ou vídeo
@@ -84,7 +92,9 @@ function displayMedia(mediaPath, index) {
             displayImg.style.visibility = "visible";
 
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(nextSlide, 5000);
+
+            if (document.hasFocus())
+                timeoutId = setTimeout(nextSlide, 5000);
         }
         else if (extension == "mp4") {
             youtubePlayer.stopVideo();
@@ -95,7 +105,7 @@ function displayMedia(mediaPath, index) {
 
             clearTimeout(timeoutId);
 
-            if (displayVideo.paused)
+            if (displayVideo.paused && document.hasFocus())
                 timeoutId = setTimeout(nextSlide, 5000);
         }
     }
@@ -107,9 +117,21 @@ function displayMedia(mediaPath, index) {
     currentSlideIndex = index;
 }
 
+function onFocusWindow() {
+    if (displayImg.style.visibility == "visible" ||
+    (!playedVideoFirstTime && displayVideo.style.visibility == "visible") ||
+    (!playedYoutubeFirstTime && displayYoutube.style.visibility == "visible"))
+        timeoutId = setTimeout(nextSlide, 5000);
+}
+
+function onUnfocusWindow() {
+    clearTimeout(timeoutId);
+}
+
 function onPlayVideoFirstTime() {
     clearTimeout(timeoutId);
-    document.querySelector(".gallery-display video").removeEventListener("play", onPlayVideoFirstTime);
+    playedVideoFirstTime = true;
+    displayVideo.removeEventListener("play", onPlayVideoFirstTime);
 }
 
 function onYoutubePlayerReady(event) {
