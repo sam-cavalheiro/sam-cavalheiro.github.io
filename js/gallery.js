@@ -5,7 +5,7 @@ var displayVideo;
 
 var youtubePlayer;
 
-var timeoutId = -1;
+var nextSlideTimeoutId = -1;
 var pauseOnEndIntervalId = -1;
 var currentSlideIndex = -1;
 var playedVideoFirstTime = false;
@@ -77,12 +77,12 @@ function displayMedia(mediaPath, index) {
         youtubePlayer.loadVideoById(mediaPath);
         displayYoutube.style.visibility = "visible";
 
-        clearTimeout(timeoutId);
+        clearTimeout(nextSlideTimeoutId);
 
         if (!document.hasFocus() || !isVisibleInScroll)
             youtubePlayer.pauseVideo();
         else if (!playedYoutubeFirstTime)
-            timeoutId = setTimeout(nextSlide, 5000);
+            nextSlideTimeoutId = setTimeout(nextSlide, 5000);
     }
     else { // Imagem ou vídeo
         var extension = "";
@@ -99,10 +99,10 @@ function displayMedia(mediaPath, index) {
             displayImg.src = mediaPath;
             displayImg.style.visibility = "visible";
 
-            clearTimeout(timeoutId);
+            clearTimeout(nextSlideTimeoutId);
 
             if (document.hasFocus() && isVisibleInScroll)
-                timeoutId = setTimeout(nextSlide, 5000);
+                nextSlideTimeoutId = setTimeout(nextSlide, 5000);
         }
         else if (extension == "mp4") {
             youtubePlayer.stopVideo();
@@ -111,10 +111,10 @@ function displayMedia(mediaPath, index) {
             displayVideo.play();
             displayVideo.style.visibility = "visible";
 
-            clearTimeout(timeoutId);
+            clearTimeout(nextSlideTimeoutId);
 
             if (displayVideo.paused && document.hasFocus() && isVisibleInScroll)
-                timeoutId = setTimeout(nextSlide, 5000);
+                nextSlideTimeoutId = setTimeout(nextSlide, 5000);
         }
     }
 
@@ -129,7 +129,7 @@ function activateTimerDependingCurrentSlide() {
     if (displayImg.style.visibility == "visible" ||
     (!playedVideoFirstTime && displayVideo.style.visibility == "visible") ||
     (!playedYoutubeFirstTime && displayYoutube.style.visibility == "visible"))
-        timeoutId = setTimeout(nextSlide, 5000);
+        nextSlideTimeoutId = setTimeout(nextSlide, 5000);
 }
 
 function onFocusWindow() {
@@ -149,7 +149,7 @@ function onFocusWindow() {
 }
 
 function onUnfocusWindow() {
-    clearTimeout(timeoutId);
+    clearTimeout(nextSlideTimeoutId);
 
     if (playedVideoFirstTime && displayVideo.style.visibility == "visible" && !displayVideo.paused) {
         clearInterval(pauseOnEndIntervalId);
@@ -184,13 +184,13 @@ function onScroll() {
         }
     }
     else {
-        clearTimeout(timeoutId);
+        clearTimeout(nextSlideTimeoutId);
         isVisibleInScroll = false;
     }
 }
 
 function onPlayVideoFirstTime() {
-    clearTimeout(timeoutId);
+    clearTimeout(nextSlideTimeoutId);
     playedVideoFirstTime = true;
     displayVideo.removeEventListener("play", onPlayVideoFirstTime);
 }
@@ -202,7 +202,7 @@ function onYoutubePlayerReady(event) {
 
 function onYoutubePlayerStateChange(event) {
     if (!playedYoutubeFirstTime && event.data == YT.PlayerState.PLAYING){
-        clearTimeout(timeoutId);
+        clearTimeout(nextSlideTimeoutId);
         playedYoutubeFirstTime = true;
     }
     if (event.data == YT.PlayerState.ENDED)
