@@ -156,7 +156,7 @@ function onUnfocusWindow() {
         wasPlayingWhenUnfocused = true;
 
         pauseOnEndIntervalId = setInterval(() => {
-            if (displayVideo.currentTime >= displayVideo.duration - 2) {
+            if (displayVideo.currentTime >= displayVideo.duration * 0.9) {
                 displayVideo.pause();
                 clearInterval(pauseOnEndIntervalId);
             }
@@ -168,7 +168,7 @@ function onUnfocusWindow() {
         wasPlayingWhenUnfocused = true;
 
         pauseOnEndIntervalId = setInterval(() => {
-            if (youtubePlayer.playerInfo.currentTime >= youtubePlayer.playerInfo.duration - 2) {
+            if (youtubePlayer.playerInfo.currentTime >= youtubePlayer.playerInfo.duration * 0.9) {
                 youtubePlayer.pauseVideo();
                 clearInterval(pauseOnEndIntervalId);
             }
