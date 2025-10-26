@@ -6,9 +6,11 @@ var displayVideo;
 var youtubePlayer;
 
 var timeoutId = -1;
+var pauseOnEndIntervalId = -1;
 var currentSlideIndex = -1;
 var playedVideoFirstTime = false;
 var playedYoutubeFirstTime = false;
+var wasPlayingWhenUnfocused = false;
 var isVisibleInScroll = false;
 
 
@@ -131,11 +133,47 @@ function activateTimerDependingCurrentSlide() {
 }
 
 function onFocusWindow() {
+    if (wasPlayingWhenUnfocused) {
+        clearInterval(pauseOnEndIntervalId);
+        wasPlayingWhenUnfocused = false;
+
+        if (displayVideo.style.visibility == "visible")
+            displayVideo.play();
+        if (displayYoutube.style.visibility == "visible")
+            youtubePlayer.playVideo();
+
+        return;
+    }
+
     activateTimerDependingCurrentSlide();
 }
 
 function onUnfocusWindow() {
     clearTimeout(timeoutId);
+
+    if (playedVideoFirstTime && displayVideo.style.visibility == "visible" && !displayVideo.paused) {
+        clearInterval(pauseOnEndIntervalId);
+        wasPlayingWhenUnfocused = true;
+
+        pauseOnEndIntervalId = setInterval(() => {
+            if (displayVideo.currentTime >= displayVideo.duration - 2) {
+                displayVideo.pause();
+                clearInterval(pauseOnEndIntervalId);
+            }
+        }, 100);
+    }
+    else if (playedYoutubeFirstTime && displayYoutube.style.visibility == "visible" &&
+        youtubePlayer.playerInfo.playerState == YT.PlayerState.PLAYING) {
+        clearInterval(pauseOnEndIntervalId);
+        wasPlayingWhenUnfocused = true;
+
+        pauseOnEndIntervalId = setInterval(() => {
+            if (youtubePlayer.playerInfo.currentTime >= youtubePlayer.playerInfo.duration - 2) {
+                youtubePlayer.pauseVideo();
+                clearInterval(pauseOnEndIntervalId);
+            }
+        }, 100);
+    }
 }
 
 function onScroll() {
