@@ -10,7 +10,6 @@ var pauseOnEndIntervalId = -1;
 var currentSlideIndex = -1;
 var playedVideoFirstTime = false;
 var playedYoutubeFirstTime = false;
-var wasPlayingWhenUnfocused = false;
 var isVisibleInScroll = false;
 
 
@@ -108,12 +107,13 @@ function displayMedia(mediaPath, index) {
             youtubePlayer.stopVideo();
 
             displayVideo.src = mediaPath;
-            displayVideo.play();
             displayVideo.style.visibility = "visible";
 
             clearTimeout(nextSlideTimeoutId);
 
-            if (displayVideo.paused && document.hasFocus() && isVisibleInScroll)
+            if (document.hasFocus() && isVisibleInScroll)
+                displayVideo.play();
+            if (!playedVideoFirstTime)
                 nextSlideTimeoutId = setTimeout(nextSlide, 5000);
         }
     }
@@ -133,55 +133,19 @@ function activateTimerDependingCurrentSlide() {
 }
 
 function onFocusWindow() {
-    if (wasPlayingWhenUnfocused) {
-        clearInterval(pauseOnEndIntervalId);
-        wasPlayingWhenUnfocused = false;
-
-        if (displayVideo.style.visibility == "visible")
-            displayVideo.play();
-        if (displayYoutube.style.visibility == "visible")
-            youtubePlayer.playVideo();
-
-        return;
-    }
-
-    activateTimerDependingCurrentSlide();
+    if (isVisibleInScroll)
+        activateTimerDependingCurrentSlide();
 }
 
 function onUnfocusWindow() {
     clearTimeout(nextSlideTimeoutId);
-
-    if (playedVideoFirstTime && displayVideo.style.visibility == "visible" && !displayVideo.paused) {
-        clearInterval(pauseOnEndIntervalId);
-        wasPlayingWhenUnfocused = true;
-
-        pauseOnEndIntervalId = setInterval(() => {
-            if (displayVideo.currentTime >= displayVideo.duration * 0.9) {
-                displayVideo.pause();
-                clearInterval(pauseOnEndIntervalId);
-            }
-        }, 100);
-    }
-    else if (playedYoutubeFirstTime && displayYoutube.style.visibility == "visible" &&
-        youtubePlayer.playerInfo.playerState == YT.PlayerState.PLAYING) {
-        clearInterval(pauseOnEndIntervalId);
-        wasPlayingWhenUnfocused = true;
-
-        pauseOnEndIntervalId = setInterval(() => {
-            if (youtubePlayer.playerInfo.currentTime >= youtubePlayer.playerInfo.duration * 0.9) {
-                youtubePlayer.pauseVideo();
-                clearInterval(pauseOnEndIntervalId);
-            }
-        }, 100);
-    }
 }
 
 function onScroll() {
     if (window.scrollY + window.innerHeight > displayGallery.offsetTop && window.scrollY < displayGallery.offsetTop + displayGallery.offsetHeight + 100) {
-        if (!isVisibleInScroll) {
+        if (!isVisibleInScroll && document.hasFocus())
             activateTimerDependingCurrentSlide();
-            isVisibleInScroll = true;
-        }
+        isVisibleInScroll = true;
     }
     else {
         clearTimeout(nextSlideTimeoutId);
