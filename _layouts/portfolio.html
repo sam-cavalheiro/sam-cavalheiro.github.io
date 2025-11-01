@@ -13,26 +13,26 @@ layout: default
       </header>
 
       {% if page.media_paths.size > 0 %}
-        <div class="gallery">
-          <div class="gallery-display" style="background-color: black;">
-            <div id="youtube-player" style="visibility: hidden;"></div>
-            <img style="visibility: hidden;" />
-            <video style="visibility: hidden;" onended="nextSlide()" controls></video>
-          </div>
-        {% for media_path in page.media_paths %}
-          <div class="gallery-thumbnail">
-            {% if page.media_thumbnail_paths[forloop.index0] != null and page.media_thumbnail_paths[forloop.index0] != "" %}
-              {% assign media_src = page.media_thumbnail_paths[forloop.index0] %}
-            {% else %}
-              {% assign media_src = media_path %}
-            {% endif %}
-            <img src="{{ media_src }}" id="thumbnail{{ forloop.index0 }}" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})" />
-            {% assign slice_path = media_path | slice: -3, 3 | downcase %}
-            {% if slice_path != "png" and slice_path != "jpg" and slice_path != "bmp" and slice_path != "gif" %}
-              <img class="gallery-thumbnail-play" src="/images/play.svg" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})"  />
-            {% endif %}
-          </div>
-        {% endfor %}
+        <div class="gallery-display" style="background-color: black;">
+          <div id="youtube-player" style="visibility: hidden;"></div>
+          <img style="visibility: hidden;" />
+          <video style="visibility: hidden;" onended="nextSlide()" controls></video>
+        </div>
+        <div class="gallery-thumbnails-container">
+          {% for media_path in page.media_paths %}
+            <div class="gallery-thumbnail">
+              {% if page.media_thumbnail_paths[forloop.index0] != null and page.media_thumbnail_paths[forloop.index0] != "" %}
+                {% assign media_src = page.media_thumbnail_paths[forloop.index0] %}
+              {% else %}
+                {% assign media_src = media_path %}
+              {% endif %}
+              <img src="{{ media_src }}" id="thumbnail{{ forloop.index0 }}" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})" />
+              {% assign slice_path = media_path | slice: -3, 3 | downcase %}
+              {% if slice_path != "png" and slice_path != "jpg" and slice_path != "bmp" and slice_path != "gif" %}
+                <img class="gallery-thumbnail-play" src="/images/play.svg" onclick="displayMedia('{{ media_path }}', {{ forloop.index0 }})"  />
+              {% endif %}
+            </div>
+          {% endfor %}
         </div>
       {% endif %}
 
