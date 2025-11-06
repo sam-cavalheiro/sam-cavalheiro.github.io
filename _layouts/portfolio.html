@@ -36,37 +36,25 @@ layout: default
         </div>
       {% endif %}
 
-      <div class="post-portfolio-info">
-        <table>
-          <tr>
-            <td><h2>Descrição</h2></td>
-            <td><h2>Informações</h2></td>
-          </tr>
-          <tr>
-            <td>{{ page.description | markdownify }}</td>
-            <td>
+      <div class="portfolio-info">
+        <div class="portfolio-info-column">
+          <div class="portfolio-info-column-text">
+            <h2>Descrição</h2>
+            <p>{{ page.description | markdownify }}</p>
+          </div>
+        </div>
+        <div class="portfolio-info-column">
+          <div class="portfolio-info-column-text">
+            <h2>Informações</h2>
+            <p>
               <strong>Cargo:</strong> {{ page.role }}<br />
               <strong>Prazo:</strong> {{ page.frame_time }} meses<br />
               <strong>Ano Desenvolvido:</strong> {{ page.year }}<br />
               <strong>Engine:</strong> {{ page.engine }}<br />
               <strong>Linguagem:</strong> {{ page.prog_language }}<br />
-              {% if page.web_page_types.size > 1 %}
-                {% for web_page_url in page.web_pages %}
-                  {% if forloop.index0 > 0 %}
-                    |
-                  {% endif %}
-                  <a href="{{ web_page_url }}" target="_blank">
-                    <strong>{{ page.web_page_types[forloop.index0] }}</strong>
-                  </a>
-                {% endfor %}
-              {% else %}
-                <a href="{{ page.web_pages[0] }}" target="_blank">
-                  <strong>Página do {{ page.web_page_types[0] }}</strong>
-                </a>
-              {% endif %}
-            </td>
-          </tr>
-        </table>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div class="post-content">{{ content }}</div>
