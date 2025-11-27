@@ -22,9 +22,9 @@ description: |
 
 # Introdução
 
-Assumi a responsabilidade de programar um **jogo online** do gênero **MMORPG** ao lado de outros 4 programadores, sendo minhas atuações no projeto focadas na **implementação de soluções de interação online, combate e autenticação (login/registro)**.
+Assumi a responsabilidade de programar um **jogo online** do gênero **MMORPG** ao lado de mais 4 programadores, sendo minhas atuações no projeto focadas na **implementação de soluções de interação online, combate e autenticação (login/registro)**.
 
-Este projeto foi iniciado alguns meses antes da pandemia de Covid-19. Quando ocorreu o lockdown, suspendemos o projeto. Retomamos o projeto quando as aulas na graduação foram retomadas remotamente.
+Este projeto foi iniciado alguns meses antes da pandemia de Covid-19. Quando ocorreu o lockdown, suspendemos o projeto e o retomamos junto com as aulas na graduação quando retomadas remotamente.
 
 Projeto desenvolvido para a disciplina **TCP III** (Trabalho de Conclusão de Período III) da graduação de **Jogos Digitais do IFRJ Campus Eng. Paulo de Frontin**. O **TCP III** vigente consistia no dever de produzir e apresentar um **jogo online** ao final da disciplina na graduação.
 
@@ -38,9 +38,9 @@ Este foi meu primeiro projeto realizado com uma **equipe com mais de vinte pesso
 <video src="{{ "/assets/portfolio/eris-online-interacao-online.mp4" }}" width="480" height="270" loop autoplay muted></video>
 </p>
 
-Eu e outros programadores do projeto decidimos que utilizaríamos o **Photon PUN** como solução para a **interação online** no jogo seja facilitada, também possibilitando utilizar os **servidores** gratuitos disponibilizados pela **Photon** para o jogo.
+Eu e outros programadores do projeto decidimos que utilizaríamos o **Photon PUN** como solução para que a **interação online** no jogo seja facilitada, também possibilitando utilizar os **servidores** gratuitos disponibilizados pela **Photon** para o jogo.
 
-Feito isto, devido ao fato de ser meu primeiro projeto utilizando **Photon** (incluindo **PUN**), fiz as configurações e integrações do **Photon** seguindo tutoriais da internet e a documentação do **Photon**. Os códigos que possibilitam as **interações online** são surpreendentemente simples. Foi necessário um código para os **callbacks do Photon** (```NetworkController```), **menu de autenticação** (```AuthenticationController```) e ***setup* em cena de jogo** (```NetworkSetup```)
+Feito isto, devido ao fato de ser meu primeiro projeto utilizando **Photon** (incluindo **PUN**), fiz as configurações e integrações do **Photon** seguindo tutoriais da internet e a documentação do **Photon**. Os códigos que possibilitam as **interações online** são surpreendentemente simples. Foi necessário um código para os ***callbacks* do Photon** (```NetworkController```), **menu de autenticação** (```AuthenticationController```) e ***setup* em cena de jogo** (```NetworkSetup```)
 
 Classe ```NetworkController``` - Ouve os *callbacks* do **Photon**, sendo utilizado para inicializar a conexão com o **Photon** assim que o jogador acessa o menu inicial. Código abaixo:
 
@@ -919,11 +919,11 @@ public class PlayerController : MonoBehaviour
 <video src="{{ "/assets/portfolio/eris-online-inimigos.mp4" }}" width="480" height="270" loop autoplay muted></video>
 </p>
 
-Programar os **inimigos** foi uma parte bem desafiadora do projeto, pois colocaria toda implementação do **Photon** realizada em prática. O sistema é bem simples, mas ainda assim foi desafiador. Infelizmente o desafio foi tanto que ficou com notórios *bugs* no fim do projeto.
+Programar os **inimigos** foi uma parte bem desafiadora do projeto, pois colocaria toda implementação do **Photon** realizada em prática. Apesar de se tratar de um sistema aparentemente simples, suas lógicas são complexas de se programar, principalmente por ser uma interação **online**. Infelizmente o desafio foi tanto que ficou com notórios *bugs*, mesmo no fim do projeto.
 
 ## IA de Combate
 
-Os **inimigos** possuem sua própria **IA** para lidar com combates.
+Os **inimigos** possuem sua própria **IA para lidar com combates**.
 
 - Os **inimigos** atacam alvos próximos se forem agressivos, do contrário só atacam se forem atacados;
 - Quando um alvo se distancia ou morre, o inimigo ataca o alvo mais próximo dentre todos os alvos dentro de sua distância;
@@ -1103,7 +1103,7 @@ public class EnemyController : MonoBehaviour
 
 ## Movimentação Online
 
-Como foi possível observar na [IA de Combate](#ia-de-combate), o **inimigo** apenas segue o alvo e retorna para seu ponto de *spawn*. Também criei um script já ativa ou desativa o ```NavMeshAgent``` do **inimigo** dependendo se for o *host* ou não, evitando assim *bugs* que poderiam ocorrer com a **sincronia online**.
+Como foi possível observar na [IA de Combate](#ia-de-combate), o **inimigo** apenas **segue** o alvo e retorna para seu ponto de *spawn*. Também criei um script já ativa ou desativa o ```NavMeshAgent``` do **inimigo** dependendo se for o *host* ou não, evitando assim *bugs* que poderiam ocorrer com a **sincronia online**.
 
 ```cs
 using System.Collections;

@@ -22,13 +22,13 @@ description: |
 
 # Introdução
 
-Neste projeto, assumi a responsabilidade de exercer tarefas com foco em **mecânicas de inimigos, mecânicas da câmera, gerenciamento de tempo e gerenciamento das levas**. Inicialmente não eram estas minhas responsabilidades, mas com o decorrer do prazo e das necessidades do projeto, foi necessário adaptar às demandas.
+Neste projeto, fui encarregado de exercer tarefas com foco em **mecânicas de inimigos, mecânicas da câmera, gerenciamento de tempo e gerenciamento das levas**. Inicialmente não eram estas minhas responsabilidades, mas com o decorrer do prazo e das necessidades do projeto, foi necessário adaptar às demandas.
 
 Projeto desenvolvido para a disciplina **TCP II** (Trabalho de Conclusão de Período II) da graduação de **Jogos Digitais do IFRJ Campus Eng. Paulo de Frontin**. O **TCP II** vigente consistia no dever de produzir e apresentar um **jogo 3D** ao final da disciplina na graduação.
 
 A equipe foi selecionada aleatoriamente pelo orientador. A equipe conta com 12 membros, 2 destes membros atuavam como **programadores**. Os gestores da equipe são de turmas externas à do **TCP II** vigente, eles se voluntariaram para serem gestores através de um anúncio do orientador, e nossa equipe votou nestes gestores. Tivemos *workshops* e palestras de 7 alunos de turmas externas à do **TCP II** vigente, proporcionados pelos nossos gestores. [Os créditos podem ser acessados na página do itch.io](https://samcavalheiro.itch.io/invasao-o-utimo-ciclo){:target="_blank"}.
 
-Este foi meu primeiro projeto realizado com uma **equipe com mais de dez pessoas**, de um **jogo em 3D**, com uso de **controle de versão** (neste porojeto foi utilizado **Unity Collab**) e seguindo a **metodologia Scrum**.
+Este foi meu primeiro projeto realizado com uma **equipe com mais de dez pessoas**, de um **jogo em 3D**, com uso de **controle de versão** (neste projeto foi utilizado **Unity Collab**) e seguindo a **metodologia Scrum**.
 
 # Câmera
 
@@ -46,7 +46,7 @@ Quando o ângulo e a distância da **câmera** foram decididos, eu e o outro pro
 
 ## Movimentação da Câmera
 
-No **Dojo**, conseguimos realizar a **movimentação da câmera**. A **movimentação da câmera** é simplesmente uma **câmera** que move horizontalmente (eixo X) quando o mouse alcança as extremidades horizontais da tela e verticalmente (eixos Y e Z) quando o mouse alcança as extremidades verticais da tela. Não foi difícil pesquisar tal solução, mas encontrávamos dificuldade em entender como uma **câmera** se movimentaria em um **espaço 3D**.
+No **Dojo**, conseguimos realizar a **movimentação da câmera**. O sistema é simplesmente uma **câmera** que **move** horizontalmente (eixo X) quando o *mouse* alcança as extremidades horizontais da tela e verticalmente (eixos Y e Z) quando o *mouse* alcança as extremidades verticais da tela. Não foi difícil pesquisar tal solução, mas encontrávamos dificuldade em entender como uma **câmera** se movimentaria em um **espaço 3D**.
 
 ```cs
     void MoveCamera()
@@ -73,10 +73,10 @@ No **Dojo**, conseguimos realizar a **movimentação da câmera**. A **movimenta
     }
 ```
 
-## Zoom da Câmera
+## *Zoom* da Câmera
 
-Realizei a mecânica de **zoom da câmera** individualmente por inicialmente ser responsável pela **câmera**.
-A **câmera** aplica um *zoom* ao rolar com o *scroll do mouse*. O eixo do *scroll do mouse* é aplicada em um valor flutuante de 0 a 1, e este valor é multiplicado a velocidade da rolagem de **câmera**, e aplicada em uma transladação no eixo Z (frente/trás) na própria **câmera**.
+Realizei a mecânica de ***zoom* da câmera** sozinho por inicialmente ser responsável pela **câmera** do jogo.
+Um ***zoom*** é aplicado ao rolar com o *scroll do mouse*. O eixo do *scroll do mouse* é aplicada em um valor flutuante de 0 a 1, e este valor é multiplicado a velocidade da rolagem de **câmera**, e aplicada em uma transladação no eixo Z (frente/trás) na própria **câmera**.
 
 ```cs
     void Zoom()
@@ -92,7 +92,7 @@ A **câmera** aplica um *zoom* ao rolar com o *scroll do mouse*. O eixo do *scro
     }
 ```
 
-Há um *bug* na mecânica que pode ocorrer **zoom** excessivamente se o jogador rodar freneticamente o *scroll do mouse*. Revisitando o código, pude observar que esqueci de considerar multiplicar o *scroll do mouse* com a velocidade do *scroll* (`scrollSpeed`) e estava aplicando o *zoom* utilizando `Time.deltaTime`, fazendo o *bug* ocorrer porque o *zoom* estava tendo seu *delay de frame* compensado sem necessidade.
+Há um *bug* na mecânica que pode ocorrer ***zoom*** excessivamente se o jogador rodar freneticamente o *scroll do mouse*. Revisitando o código, pude observar que esqueci de multiplicar o *scroll do mouse* com a velocidade do *scroll* (`scrollSpeed`) e estava aplicando o ***zoom*** utilizando `Time.deltaTime`, fazendo o *bug* ocorrer porque o ***zoom*** estava tendo seu *delay de frame* compensado sem necessidade.
 
 ```cs
     void Zoom()
@@ -116,37 +116,39 @@ Os **inimigos** são bem simples:
 
 - Possuem uma movimentação com **NavMesh** que vão do ponto inicial até a torre do jogador;
 - Assim que encostam na torre, se autodestrói e causa dano à torre;
-- Carrega **buffs** e **debuffs** (status positivos e negativos).
+- Carrega ***buffs*** e ***debuffs*** (status positivos e negativos).
 
 ## Movimentação dos Inimigos
 
-A **movimentação** utiliza **NavMesh** para facilitar o processo. Os **inimigos** só precisam **se mover** do ponto de *spawn* até a torre principal. O uso do **NavMesh** foi um pedido do gestor da equipe, pois eu mesmo não conhecia tal tecnologia (e provavelmente iria programar no dedo um sistema de movimentação). Para aprender sobre, fui realizando pesquisas e redigindo um documento (o documento era necessário para realização da tarefa) sobre o uso do **NavMesh** aplicado em nosso projeto.
+A **movimentação** utiliza **NavMesh** para facilitar o processo. Os **inimigos** só precisam **se mover** do ponto de *spawn* até a torre principal. O uso do **NavMesh** foi um pedido do gestor da equipe, pois eu mesmo não conhecia tal tecnologia. Para aprender sobre, fui realizando pesquisas e redigindo um documento (o documento era necessário para realização da tarefa) sobre o uso do **NavMesh** aplicado em nosso projeto.
 
 Foram necessários vários ajustes no **NavMesh dos inimigos** e do cenário, pois a passagem para os **inimigos** atravessarem era muito estreita. Com os ajustes feitos, os **inimigos** conseguiram andar pela passagem.
 
+{% comment %}
 Os **inimigos** no jogo realizavam uma curva muito lenta ao andar, e isso não era intencional. Utilizar um sistema de **movimentação** mais simples ou realizar uma simples **transladação** dos **inimigos** até a base do jogador seria uma solução esteticamente mais eficaz apesar da possibilidade de levar muito tempo. No entanto ter aprendido a usar o **NavMesh** foi essencial para minhas habilidades em diversos outros projetos.
+{% endcomment %}
 
 <p align="center">
 <video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-movimentacao-inimigos.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-## Buffs e Debuffs em Inimigos
+## *Buffs* e *Debuffs* em Inimigos
 
-Os **inimigos** podem armazenar **buffs/debuffs** (status positivos/negativos) a partir de dano recebido por uma torre ou a partir de alguma habilidade passiva do próprio **inimigo**.
+Os **inimigos** podem armazenar ***buffs/debuffs*** (status positivos/negativos) a partir de dano recebido por uma torre ou a partir de alguma habilidade passiva do próprio **inimigo**.
 
-No projeto, temos apenas o **buff e debuff** da **Torre** de Gelo e do **inimigo** XR3 implementados:
+No projeto, temos apenas o ***buff* e *debuff*** da **Torre de Gelo** e do **inimigo XR3** implementados:
 
-- A **Torre** de Gelo reduz a velocidade do **inimigo** atingido por seu projétil por alguns segundos;
-- O **inimigo** XR3 aumenta sua própria velocidade por alguns segundos, necessitando aguardar um tempo (*cooldown*) para usar o **buff** novamente.
+- A **Torre de Gelo** reduz a velocidade do **inimigo** atingido por seu projétil por alguns segundos;
+- O **inimigo XR3** aumenta sua própria velocidade por alguns segundos, necessitando aguardar um tempo (*cooldown*) para usar o ***buff*** novamente.
 
 <p align="center">
 <video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-buffs-debuffs-inimigos.mp4" }}" controls loop autoplay muted></video>
 </p>
 
-Apesar do sistema funcionar muito bem na prática, a codificação tinha alguns problemas de amadorismo:
+Apesar do sistema funcionar na prática, a codificação tinha alguns problemas:
 
-- O script não respeitava conceitos de **POO**, com todo o processamento dos **buffs/debuffs** ocorrendo direto da classe do **inimigo**. Quando programei esse projeto, eu ainda não fazia uso do **POO** com afinco como hoje faço;
-- Os efeitos dos **buffs/debuffs** não eram flexíveis, sendo necessário programar cada um deles. Apesar de ser um problema, se for levado em consideração o prazo e escopo do projeto, programar o efeito de cada **buff/debuff** direto no código, era o jeito mais rápido. Inclusive, só havia 2 **buffs/debuffs** para programar, e ambos eram de alteração de velocidade.
+- Todo o processamento dos ***buffs/debuffs*** ocorre direto da classe do **inimigo**. Quando programei esse projeto, eu ainda não fazia uso do **POO** com afinco como hoje faço;
+- Os efeitos dos ***buffs/debuffs*** não eram flexíveis, sendo necessário programar cada efeito.
 
 > Os comentários deste código foram criados para facilitar a leitura, portanto não estavam presentes no código original.
 
@@ -386,7 +388,7 @@ public class Enemy : MonoBehaviour
 }
 ```
 
-Hoje, eu faria os **buffs/debuffs** em uma classe separada da classe **inimigo**, inserindo esta classe como componente do **game object** no **inimigo** na **Unity**. Inclusive, seria interessante se os **buffs/debuffs** não fossem *hardcodados*, mas no contexto desse projeto, talvez não fosse altamente necessário considerando que só havia 2 **buffs/debuffs**.
+Hoje, eu faria os ***buffs/debuffs*** em uma classe separada da classe **inimigo**, inserindo esta classe como componente do **game object** no **inimigo** na **Unity**. Inclusive, seria interessante se os ***buffs/debuffs*** não fossem *hardcodados*, mas no contexto desse projeto, talvez não fosse altamente necessário considerando que só havia 2 ***buffs/debuffs***.
 
 # Tutorial
 
@@ -507,7 +509,7 @@ public class InterfaceControl : MonoBehaviour
 
 # Sistema de Levas
 
-O **Sistema de Levas** instancia cada **inimigo** definido pelos *designers* a partir da *interface* da **Unity**. Os **inimigos** são instanciados um por vez dentro de um **tempo de intervalo** também definido através da *interface* da **Unity**. No código abaixo, é possível observar que há variável tanto para os **inimigos** (`GameObject[] Enemies`) quanto para o **tempo de intervalo para o spawn** de cada um deles (`float spawnIntervalTime`):
+O **Sistema de Levas** instancia cada **inimigo** definido pelos *designers* a partir da *interface* da **Unity**. Os **inimigos** são instanciados um por vez dentro de um **tempo de intervalo** também definido através da *interface* da **Unity**. No código abaixo, é possível observar que há variável tanto para os **inimigos** (`GameObject[] Enemies`) quanto para o **tempo de intervalo para o *spawn*** (`float spawnIntervalTime`):
 
 ```cs
 public class EnemyGroup : MonoBehaviour
@@ -517,7 +519,7 @@ public class EnemyGroup : MonoBehaviour
 }
 ```
 
-Para passar para próxima **leva**, todos os **inimigos** da **leva** precisam ser detonados para então prosseguir. Cada **leva** usará os **inimigos** definidos pelo *designer* através dos **grupos de inimigos** (classe `EnemyGroup`).
+Para passar para próxima **leva**, todos os **inimigos** da **leva** precisam ser detonados para então prosseguir para a próxima **leva**. Cada **leva** usará os **inimigos** definidos pelo *designer* através dos **grupos de inimigos** (classe `EnemyGroup`).
 
 Os problemas que consigo encontrar nesse código são:
 
@@ -799,14 +801,14 @@ public class InterfaceControl : MonoBehaviour
 
 # Outros
 
-- **Implementação de assets:** Modelo 3D dos inimigos, sons dos inimigos e interface gráfica;
+- **Implementação de *assets*:** Modelo 3D dos inimigos, sons dos inimigos e interface gráfica;
 - **Algumas correções e ajustes em outros scripts.**
 
 # Lições Aprendidas
 
-No vigente projeto, aprendi a fazer algum uso de **POO (Programação Orientada a Objeto)**, mesmo que não dominando o conceito na hora de aplicar, estava presente no projeto e é possível observar que o conceito é utilizado conforme o avanço do projeto.
+No vigente projeto, aprendi a fazer algum uso de **POO (Programação Orientada a Objeto)**, mesmo que não dominando o conceito na hora de aplicar, é possível observar que o conceito é utilizado conforme o avanço do projeto.
 
-Considerando ser o meu primeiro **projeto com mais de dez pessoas**, a comunicação foi fundamental: aprimorei minhas habilidades de comunicação nesse cenário totalmente novo para mim, seja no momento de implementar assets (comunicando com as pessoas artistas da equipe), comunicando o progresso e dificuldades nas *dailies* no **Scrum**, e trabalhando em conjunto com outro programador. Tanto trabalhar em conjunto com outro programador quanto participar da metodologia **Scrum**, eram coisas novas para mim nesse projeto e foi uma experiência muito valiosa!
+Considerando ser o meu primeiro **projeto com mais de dez pessoas**, a comunicação foi fundamental: aprimorei minhas habilidades de comunicação nesse cenário totalmente novo para mim, seja no momento de implementar *assets* (comunicando com artistas da equipe), comunicando o progresso e dificuldades nas *dailies* no **Scrum**, e trabalhando em conjunto com outro programador. Tanto trabalhar em conjunto com outro programador quanto participar da metodologia **Scrum**, eram coisas novas para mim nesse projeto e foi uma experiência muito valiosa!
 
 Aprendi muito com o fato de ter trabalhado com **outro programador** pela primeira vez também, realizando várias trocas de conhecimentos seja através **Dojo**, pessoalmente ou enquanto produzia no projeto com uso de **controle de versão** (nosso primeiro projeto utilizando).
 

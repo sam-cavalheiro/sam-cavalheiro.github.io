@@ -23,7 +23,7 @@ description: |
 
 # Introdução
 
-Neste projeto, assumi a responsabilidade de **programar as mecânicas do jogo** e **implementar artes, animações de spritesheets e efeitos sonoros**.
+Neste projeto, me encarreguei de **programar as mecânicas do jogo** e **implementar artes, animações de spritesheets e efeitos sonoros**.
 
 Projeto desenvolvido para a disciplina **TCP I** (Trabalho de Conclusão de Período I) da graduação de **Jogos Digitais do IFRJ Campus Eng. Paulo de Frontin**. O **TCP I** vigente consistia no dever de produzir e apresentar um **jogo 2D** ao final da disciplina na graduação.
 
