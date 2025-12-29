@@ -17,9 +17,10 @@ web_page_types: [ itch.io ]
 description: |
     Jogo de **tiro em primeira pessoa (FPS) online**. Os jogadores devem sobreviver à maior quantia de levas de frangos zumbis possível trabalhando em equipe.
     
-    Meu primeiro projeto com **coleta de telemetria**. Projeto realizado para o **TCP VI**.
+    Meu primeiro projeto com uso de **telemetria**. Projeto realizado para o **TCP VI**.
 ---
 
+{% comment %}
 <!-- O online do jogo voltou a funcionar. Se der errado de novo, vou descomentar -->
 <!--
 # Aviso
@@ -30,10 +31,11 @@ description: |
 >
 > Obrigado pela compreensão. :)
 -->
+{% endcomment %}
 
 # Introdução
 
-Neste projeto, assumo a responsabilidade de programar um **jogo de tiro em primeira pessoa (FPS) online** e confeccionar, junto da equipe, um **artigo científico** que utilize este jogo como objeto de estudo, utilizando os **dados de telemetria coletados dos jogadores** como auxílio. Atuei como o **único programador** deste projeto.
+Neste projeto, assumo a responsabilidade de programar um **jogo de tiro em primeira pessoa (FPS) online** e confeccionar, junto da equipe, um **artigo científico** que utilize este jogo como objeto de estudo e tenha os **dados coletados dos jogadores a partir da telemetria** como base para construção do **artigo**. Atuei como o **único programador** deste projeto.
 
 Este projeto foi realizado durante a pandemia de Covid-19, sendo produzido remotamente devido ao lockdown. <!-- não tenho 100% de certeza -->
 
@@ -41,7 +43,7 @@ Projeto desenvolvido para a disciplina **TCP VI** (Trabalho de Conclusão de Per
 
 A equipe do projeto conta com 5 membros, sendo eu, o **único programador**. [Os créditos podem ser acessados na página do itch.io](https://samcavalheiro.itch.io/tcp6-kristian-frango-cabuloso){:target="_blank"}.
 
-Este foi meu primeiro projeto com **coleta de telemetria** (inclusive com uso do **Unity Analytics**) e utilizando especificamente o **Photon Bolt**.
+Este foi meu primeiro projeto com **coleta de telemetria** (inclusive com uso do **Unity Analytics**) e também o primeiro utilizando o **Photon Bolt**.
 
 # Conectividade Online com Photon Bolt
 
@@ -548,11 +550,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
 }
 ```
 
-Quando o ```WeaponController``` já está pronto pelo **Photon**, configuramos a parte que pode replicar **online**:
-
-- O número da **arma**: ```state.PlayerWeaponIndex = 0;```
-- O evento da ação de **atirar**: ```state.OnPlayerShoot = Photon_Shoot;```
-- E o evento de coleta de **arma** (que abordo no tópico [Coleta de Arma](#coleta-de-arma)): ```state.AddCallback("PlayerPickupWeaponPath", Photon_AddWeapon);```
+Quando o ```WeaponController``` já está pronto pelo **Photon**, configuramos a parte que pode replicar **online**. Explicações nos comentários do trecho de código abaixo:
 
 ```cs
 public class WeaponController : EntityBehaviour<IKFCPlayerState>
@@ -566,9 +564,9 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
     
     public override void Attached()
     {
-        state.PlayerWeaponIndex = 0;
-        state.OnPlayerShoot = Photon_Shoot;
-        state.AddCallback("PlayerPickupWeaponPath", Photon_AddWeapon);
+        state.PlayerWeaponIndex = 0; // Número da arma
+        state.OnPlayerShoot = Photon_Shoot; // Evento da ação de atirar
+        state.AddCallback("PlayerPickupWeaponPath", Photon_AddWeapon); // Evento de coleta de arma (que abordo no tópico Coleta de Arma)
         playerAnalytics = GetComponent<PlayerAnalytics>();
         animator = GetComponentInChildren<Animator>();
     }
@@ -583,7 +581,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
 
 ### Troca de Armas
 
-No ```Update()```, existe um sistema que **troca a arma** se o número da **arma** replicado **online** for diferente do número local. Isto ocorrerá apenas caso este cliente não seja do dono/proprietário, pois isto já ocorreu na máquina do dono/proprietário.
+No ```Update()```, existe um sistema que **troca a arma** se o número da **arma** replicado **online** for diferente do número local. Isto ocorrerá apenas caso este cliente não seja do dono/proprietário, pois isto já ocorreu na máquina do mesmo.
 
 ```cs
 public class WeaponController : EntityBehaviour<IKFCPlayerState>
@@ -718,7 +716,7 @@ public class PlayerInputHandler : MonoBehaviour
 }
 ```
 
-Ambos os métodos ```SwitchWeapon``` também foram projetados para ser chamados por inimigos. Mas no fim das contas, todos os inimigos nem sequer usaram múltiplas **armas** e nem mesmo **armas** à distância, dispensando a necessidade de integrar e implementar a **troca de armas** nos inimigos.
+Ambos os métodos ```SwitchWeapon``` também foram projetados para ser chamados por inimigos. Mas no fim das contas, todos os inimigos nem sequer usaram múltiplas **armas** e nem mesmo **armas** à distância (apenas corpo-a-corpo), dispensando a necessidade de integrar e implementar a **troca de armas** nos inimigos.
 
 ### Tiro
 
@@ -734,7 +732,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
     public override void Attached()
     {
         // ...
-        state.OnPlayerShoot = Photon_Shoot;
+        state.OnPlayerShoot = Photon_Shoot; // Evento da ação de atirar
         // ...
     }
 
@@ -768,7 +766,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
 }
 ```
 
-O método ```TryShoot()``` é chamado o jogador quando a tecla de **atirar** é pressionada.
+O método ```TryShoot()``` é chamado pelo jogador quando a tecla de **atirar** é pressionada.
 
 ```cs
 public class PlayerCharacterController : EntityBehaviour<IKFCPlayerState>
@@ -916,7 +914,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
     public override void Attached()
     {
         // ...
-        state.AddCallback("PlayerPickupWeaponPath", Photon_AddWeapon);
+        state.AddCallback("PlayerPickupWeaponPath", Photon_AddWeapon); // Evento de coleta de arma
         // ...
         animator = GetComponentInChildren<Animator>();
     }
@@ -1134,7 +1132,7 @@ O tempo de início de **regeneração** só começa a quando o objeto tem **vida
 
 # Reanimação entre Jogadores
 
-É possível **reanimar outro jogador debilitado**. Ou ser **reanimado por outro jogador**, caso o próprio esteja **debilitado**.
+É possível **reanimar outro jogador debilitado** ou ser **reanimado por outro jogador**.
 
 A **reanimação** é tratada no componente ```PlayerReviveController```, mas o sistema começa sendo chamado ainda no ```Health``` através do método ```ReceiveDamage(int damage, bool damageFromPlayer)```. O ```TryReceiveDamage()``` é chamado sempre que recebe dano; o ```TriggerTimeToDie()``` é chamado quando o jogador atinge ```0``` de **vida**.
 
@@ -1201,7 +1199,7 @@ public class Health : EntityBehaviour<IKFCPlayerState>
 <video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-debilitacao.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-O método ```TriggerTimeToDie()``` cancela a movimentação do jogador, o rotaciona (para parecer que está caído no chão) e troca seu estado para **"morrendo"** (```ReviveState.Dying```). É aqui onde o jogador passa a ficar **debilitado**.
+O método ```TriggerTimeToDie()``` cancela a movimentação do jogador, o rotaciona (para parecer que está caído no chão) e troca seu estado para **"debilitado"** (```ReviveState.Dying```).
 
 ```cs
 using System.Collections;
@@ -1245,7 +1243,7 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 }
 ```
 
-Ah! O ```state.PlayerIsDying``` é a *flag* **online** que indica se o jogador está **morrendo** ou não, para que um jogador consiga identificar se o outro **morrendo**.
+Ah! O ```state.PlayerIsDying``` é a *flag* **online** que indica se o jogador está **debilitado** ou não, para que um jogador consiga identificar se o outro **debilitado**.
 
 <p align="center">
 <img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerisdying.jpg" }}" />
@@ -1278,7 +1276,11 @@ public class PlayerInputHandler : MonoBehaviour
 }
 ```
 
-Quando o jogador passa muito tempo **debilitado**, sem ter sucesso em ser **reanimado por outro jogador**: troca seu estado para "nada" (```ReviveState.None```); desliga a *flag* **online** que indica que está morrendo (pois agora morreu); e destrói seu objeto pelo **Photon Bolt** através do ```Health.Die()``` (abordo em [Dano e Morte](#dano-e-morte)).
+Quando o jogador passa muito tempo **debilitado**, sem ter sucesso em ser **reanimado por outro jogador**:
+
+- Troca seu estado para "nada" (```ReviveState.None```);
+- Desliga a *flag* **online** que indica que está **debilitado** (pois agora morreu);
+- E destrói seu objeto pelo **Photon Bolt** através do método ```Health.Die()``` (abordo em [Dano e Morte](#dano-e-morte)).
 
 ```cs
 // ...
@@ -1315,37 +1317,6 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 
 ```
 
-## Ao Receber Dano
-
-O método ```TryReceiveDamage()``` retorna ```true``` se o jogador estiver **morrendo** (**debilitado**) ou **renimando**. Do contrário, ```false```.
-
-Para além disso, caso o jogador esteja **morrendo** ou **reanimando**, ele será atrapalhado de concluir o processo de **se manter vivo** ou **reanimar** por outro jogador. 
-
-No código, o contador de tempo é decrementado caso esteja **morrendo** e incrementado caso esteja **renimando**. O contador é processado no método ```Update()```.
-
-```cs
-// ...
-public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
-{
-    // ...
-    // Retorna TRUE se recebeu dano (ou seja, está renimando ou morrendo)
-    public bool TryReceiveDamage()
-    {
-        switch (State)
-        {
-            case ReviveState.Dying:
-                Count -= Time.deltaTime * 2f; return true;
-
-            case ReviveState.Reviving:
-                Count += Time.deltaTime * 2f; return true;
-        }
-
-        return false;
-    }
-    // ...
-}
-```
-
 ## Reanimar e Ser Reanimado
 
 <p align="center">
@@ -1353,6 +1324,8 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 </p>
 
 Antes de explicar como é **ser reanimado**, é importante primeiro explicar como é **reanimar outro jogador**.
+
+### Reanimar
 
 Quando o jogador está próximo suficiente de outro jogador **debilitado** e mantém a tecla ```F``` pressionada, o jogador começa o processo de **reanimar** o outro jogador **debilitado**.
 
@@ -1542,7 +1515,9 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 
 Pronto! Agora que sabemos como é **reanimar outro jogador**, vamos ver como é **ser reanimado**.
 
-Simplesmente a *flag* **online** que indica que está **morrendo** (**debilitado**) é desligada, o estado troca para "nada" (```ReviveState.None```) e o jogador é **reanimado** com ```30%``` da **vida**. Ah, e ele troca a rotação para não parecer mais que está deitado.
+### Ser Reanimado
+
+Simplesmente a *flag* **online** que indica que está **debilitado** é desligada, o estado troca para "nada" (```ReviveState.None```) e o jogador é **reanimado** com ```30%``` da **vida**. Ah, e ele troca a rotação para não parecer mais que está deitado.
 
 ```cs
 // ...
@@ -1587,6 +1562,37 @@ public class Health : EntityBehaviour<IKFCPlayerState>
         state.PlayerHealth = Mathf.RoundToInt(maxHealth * 0.3f);
         regenerationStartCount = regenerationStartWaitTime / 2f;
     }
+```
+
+## Ao Receber Dano
+
+O método ```TryReceiveDamage()``` retorna ```true``` se o jogador estiver **debilitado** ou **renimando**. Do contrário, ```false```.
+
+Para além disso, caso o jogador esteja **debilitado** ou **reanimando**, ele será atrapalhado de concluir o processo de **se manter vivo** ou **reanimar** por outro jogador. 
+
+No código, o contador de tempo é decrementado caso esteja **debilitado** e incrementado caso esteja **reanimando**. O contador é processado no método ```Update()```.
+
+```cs
+// ...
+public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
+{
+    // ...
+    // Retorna TRUE se recebeu dano (ou seja, está renimando ou debilitado)
+    public bool TryReceiveDamage()
+    {
+        switch (State)
+        {
+            case ReviveState.Dying:
+                Count -= Time.deltaTime * 2f; return true;
+
+            case ReviveState.Reviving:
+                Count += Time.deltaTime * 2f; return true;
+        }
+
+        return false;
+    }
+    // ...
+}
 ```
 
 # IA e Movimentação de Inimigos
@@ -1657,7 +1663,7 @@ public class EnemyCharacterController : EntityBehaviour<IKFCPlayerState>
 <img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playertransforms.jpg" }}" />
 </p>
 
-A **inteligência artificial (IA) dos inimigos** simplesmente utiliza do conceito de **máquina de estado finita (FSM)** para determinar o **comportamento do inimigo**.
+A **inteligência artificial (IA) dos inimigos** simplesmente utiliza do conceito de **máquina de estado finita (FSM)** para determinar o **comportamento do inimigo** para cada um dos seus estados.
 
 Os possíveis estados que o **inimigo** pode alcançar são:
 
@@ -1760,7 +1766,7 @@ O método ```GroundCheck()``` simplesmente faz o **inimigo** parar de cair se o 
 <video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estados-inimigo-pt.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-Agora, comentarei sobre cada método de atualização utilizado na **máquina de estado** da **IA do nosso inimigo**. Já expliquei como cada um desses métodos são chamados [logo acima](#ia-e-movimentação-de-inimigos).
+Agora, comentarei sobre cada método de atualização utilizado na **máquina de estado** da **IA do nosso inimigo**. Já expliquei como cada um desses métodos são chamados, em código, [logo acima](#ia-e-movimentação-de-inimigos).
 
 ### Método ```RestUpdate()```
 
@@ -1828,7 +1834,7 @@ Se o **inimigo** estiver fora do alcance para atacar (```float followTargetToSho
 
 No entanto, se o **inimigo** não possuir nenhum alvo, ele tentará buscar um novo. Mas se não houver sucesso, ele passa para o estado "voltando à base", parando de perseguir e atacar *alguém*.
 
-Apesar de estarmos falando de tiro, na prática, o *"tiro"* possui uma distância tão curta, que o ataque desferido pelo **inimigo** é corpo-a-corpo. Fizemos desta forma para testar e ganhar tempo, podendo ser substituído por um script propriamente para ataque corpo-a-corpo futuramente.
+Apesar de estarmos falando de tiro, na prática, o *"tiro"* possui uma distância tão curta, que o ataque desferido pelo **inimigo** consequentemente é corpo-a-corpo. Fizemos desta forma para testar e ganhar tempo para ser substituído por um script propriamente para ataque corpo-a-corpo futuramente.
 
 ```cs
 // ...
@@ -1949,9 +1955,7 @@ public class EnemyCharacterController : EntityBehaviour<IKFCPlayerState>
 
 # Telemetria
 
-<!-- TODO: Postar print dos dados da telemetria (em um lugar oportuno desse tópico) -->
-
-Este foi meu primeiro projeto com **coleta de telemetria**. No projeto, foi necessário selecionar alguma tecnologia especial para integrar com o jogo, e a equipe escolheu a **telemetria**. Com a **telemetria**, foi possível **obter dados** dos jogadores que testaram o jogo para adicionarmos as **informações coletadas** ao artigo científico que acompanharia o projeto no fim do período letivo. <!-- TODO: postar link para o artigo? -->
+Este foi meu primeiro projeto com uso **telemetria** (inclusive com **Unity Analytics**). Para este **TCP**, foi necessário selecionar alguma tecnologia especial para integrar com o jogo, e nossa equipe escolheu a **telemetria**. Com a **telemetria** foi possível **obter dados** dos jogadores que testaram o jogo para adicionarmos as **informações coletadas** ao artigo científico que acompanharia o projeto no fim do período letivo. <!-- TODO: postar link para o artigo? -->
 
 Considerando que a experiência atual do projeto se resume a apenas uma **partida**, os **dados de telemetria** são enviados assim que o jogador morre em partida.
 
@@ -2154,13 +2158,13 @@ public class PlayerAnalytics : MonoBehaviour
 
 Revisando o código, pude concluir que há um problema: o jogador não acumula o tempo em que foi incrementando na área e, quando sai da área, o tempo é zerado. Este problema poderia ser facilmente resolvido se eu tivesse utilizado um dicionário para armazenar cada área usando seus nomes (```string```) como chave e o tempo (```float```) como valor.
 
-## Dados Sobre Jogadores Próximos
+## Proximidade Entre Jogadores
 
-<!-- TODO: Print dos dados sobre jogadores próximos -->
+<!-- TODO: Print dos dados sobre proximidade entre jogadores -->
 
-A pedido do *game designer*, criei um sistema à parte para **coleta de telemetria de jogadores próximos**. Esta **coleta de dados** consiste em saber o quanto o **jogador trabalhou em equipe com outros jogadores**.
+A pedido do *game designer*, criei um sistema à parte para **coleta de dados sobre a proximidade entre jogadores**. Esta **coleta de dados** tem o objetivo de saber o quanto o **jogador trabalhou em equipe com outros jogadores**.
 
-O jogador possui vários grupos separados contendo seus respectivos **jogadores em que esteve próximo** ao longo da partida. Este grupo é a classe ```NextPlayersAnalyticsGroup```. O grupo também possui uma variável para saber por quanto tempo o jogador permaneceu neste grupo (```float totalTime```) para compor parte dos **dados** finais na **coleta**.
+O jogador possui vários grupos separados contendo seus respectivos **jogadores em que esteve próximo** ao longo da partida, sendo ```NextPlayersAnalyticsGroup``` a classe destes grupos. O grupo também possui uma variável para saber por quanto tempo o jogador permaneceu neste grupo (```float totalTime```) para compor parte dos **dados** finais na **coleta**.
 
 ```cs
 using System;
@@ -2302,7 +2306,7 @@ public class NextPlayersAnalytics : MonoBehaviour
 }
 ```
 
-Junto dos [Dados Comuns](#dados-comuns), os **dados sobre os jogadores próximos** são tratados e enviados quando o jogador morre ou fecha o jogo (como explicado no [início do tópico](#telemetria)).
+Junto dos [Dados Comuns](#dados-comuns), os **dados sobre a proximidade entre jogadores** são tratados e enviados quando o jogador morre ou fecha o jogo (como explicado no [início do tópico](#telemetria)).
 
 ```cs
 [RequireComponent(typeof(PlayerReviveController), typeof(WeaponController), typeof(NextPlayersAnalytics))]
@@ -2320,23 +2324,23 @@ public class PlayerAnalytics : MonoBehaviour
 }
 ```
 
-O **sistema de coleta de dados dos jogadores próximos ao jogador** possui dois problemas:
+O **sistema de coleta de dados sobre a proximidade entre jogadores** possui dois problemas:
 
 1. Os grupos não são reutilizado quando o **jogador se aproxima de um grupo de jogadores** no qual já se aproximou anteriormente, gerando lista de grupos muito extensas, consumindo mais memória da máquina;
 2. Não é criado um grupo novo quando o **jogador se aproxima de mais jogadores** após o tempo de troca de grupo ter finalizado, deixando de criar grupos com a quantia de membros condizentes com a realidade.
 
-Devido ao fato deste sistema ter sido implementando próximo dos dias de entrega do projeto, acabei não conseguindo tempo para tais correções/otimizações. Inclusive, no escopo do projeto, não se mostrou necessário saber com quais **jogadores** específicos **estavam próximos do jogador** durante a partida. Considerando como o projeto está atualmente funcionando, o sistema provavelmente demandaria uma simplificação, talvez dispensando o agrupamento de jogadores.
+Devido ao fato deste sistema ter sido implementado próximo dos dias de entrega do projeto, acabei não conseguindo tempo para tais correções/otimizações. Inclusive, no escopo do projeto, não se mostrou necessário saber com quais **jogadores** específicos **estavam próximos do jogador** durante a partida. Considerando como o projeto está funcionando atualmente, o sistema provavelmente demandaria uma simplificação, talvez dispensando o agrupamento de **jogadores**.
 
 # Outros
 
 - **Movimentação/Controle do jogador;**
-    - O processamento dos *inputs* com a **movimentação do jogador** é realizada a cada *frame* no cliente dono do dito **jogador**.
+    - O processamento dos *inputs* com a **movimentação do jogador** é realizado a cada *frame* no cliente dono do dito **jogador**.
 - **Codificação das HUDs;**
 - **Implementação de assets:** Telas, HUDs, modelo 3D e animação do frango zumbi.
 
 # Lições Aprendidas
 
-Para além de ter utilizado **Photon Bolt** e **coleta de dados com Unity Analytics** pela primeira vez, neste projeto, pude observar o quão importante pode ser o *play test* de outras pessoas. Muitos dados interessantes foram gerados para o artigo.
+Para além de ter utilizado **Photon Bolt** e usar de **telemetria (com Unity Analytics)** pela primeira vez, também pude observar o quão importante pode ser o *play test* de outras pessoas. Muitos dados interessantes foram gerados para o artigo.
 
 Me propus a ser mais **proativo** neste projeto, o que trouxe um resultado que considero satisfatório. E novamente, a realização de testes se mostra muito necessário em muitos projetos, mas é importante principalmente em projetos que envolvem o lado mais humano: como um jogo de **multijogadores** (**online**) e com **coleta de dados dos jogadores**.
 

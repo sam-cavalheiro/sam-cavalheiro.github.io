@@ -22,7 +22,7 @@ description: |
 
 # Introdução
 
-Assumi a responsabilidade de programar um **jogo que funcione com *gamepad*** e de **garantir que suas mecânicas funcionem com arte que mescla personagens em 2D e cenários em 3D**.
+Neste projeto, precisei programar um **jogo que funcione com *gamepad*** e **garantir que suas mecânicas funcionem com arte que mescla personagens em 2D e cenários em 3D**.
 
 Este projeto foi realizado durante a pandemia de Covid-19, sendo produzido remotamente devido ao lockdown.
 
@@ -79,7 +79,13 @@ public class Billboard : MonoBehaviour
 }
 ```
 
-O componente ```Billboard``` era inserido nos inimigos e no jogador, sendo um objeto extra que continha como seus filhos: o(s) *sprite*(s) (representação gráfica do objeto), o(s) *hurtbox*(es) (colisor que determina onde o objeto receberá dano) e, no caso específico do jogador, os pontos de onde o jogador iria desferir seus chutes.
+O componente ```Billboard``` era inserido nos inimigos e no jogador, sendo um objeto extra que continha como seus filhos:
+
+- O(s) *sprite*(s) (representação gráfica do objeto);
+- O(s) *hurtbox*(es) (colisor que determina onde o objeto receberá dano);
+- E, no caso específico do jogador, os pontos de onde o jogador iria desferir seus chutes.
+
+> Na imagem abaixo há um objeto com o nome de "Hitbox", mas ele está exercendo o papel do *hurtbox*. Isto foi um erro de digitação.
 
 <p align="center">
 <img src="{{ "/assets/portfolio/time-kickerz-billboard-estrutura.jpg" }}" />
@@ -87,7 +93,7 @@ O componente ```Billboard``` era inserido nos inimigos e no jogador, sendo um ob
 
 # Movimentação do Jogador
 
-Um **script de movimentação** bem simples que controla o componente ```CharacterController```, seguindo o [modelo disponibilizado documentação da Unity](https://docs.unity3d.com/ScriptReference/CharacterController.Move.html){:target="_blank"} com adaptações. Uma das adaptações presentes é a máquina de estado do jogador e o **uso do *gamepad***.
+Um **script de movimentação** bem simples que controla o componente ```CharacterController```, seguindo o [modelo disponibilizado documentação da Unity](https://docs.unity3d.com/ScriptReference/CharacterController.Move.html){:target="_blank"} com adaptações. Uma das adaptações presentes é a **máquina de estado finita (FSM)** do jogador e o **uso do *gamepad***.
 
 ```cs
 using System;
@@ -384,9 +390,11 @@ public class Kickable : MonoBehaviour
 }
 ```
 
-A parte mais desafiadora foi mesclar as mecânicas do ```Rigidbody``` com o ```NavMeshAgent```, que são sistemas de física e movimentação que funcionam de formas diferentes. A ideia de utilizar ```Rigidbody``` foi proposto pelo outro programador da equipe, com o argumento de que isso nos ajuda e facilita na a criação da física do personagem **sendo atingido pelo chute**. 
+A parte mais desafiadora foi mesclar as mecânicas do ```Rigidbody``` com o ```NavMeshAgent```, que são sistemas de física e movimentação que funcionam de formas diferentes. A ideia de utilizar ```Rigidbody``` foi proposta pelo outro programador da equipe, com o argumento de que isso nos ajudaria e facilitaria na criação da física do personagem **sendo atingido pelo chute**. 
 
-Utilizar ambos os sistemas de movimentação causa instabilidade na movimentação do personagem, podendo ocasionar em *bugs* e/ou comportamentos inesperados na movimentação. Para lidar com isto, o uso de ambos componentes são alternados entre eles: o ```Rigidbody``` ativa a *flag* ```isKinematic``` sempre que não precisamos da simulação de física, enquanto ativamos o componente do ```NavMeshAgent``` para possibilitar que o inimigo se mova pelo *NavMesh*. Quando queremos o contrário, só invertemos o ```isKinematic``` do ```Rigidbody``` e a ativação do componente ```NavMeshAgent```. Para correção de mais um tipo de conflito do *NavMesh* com o ```Rigidbody```, também aplicamos a correção do tópico [Áreas Seguras para o NavMesh](#áreas-seguras-para-o-navmesh).
+Utilizar ambos os sistemas de movimentação causa instabilidade na movimentação do personagem, podendo ocasionar em *bugs* e/ou comportamentos inesperados na movimentação.
+
+Para lidar com isto, o uso de ambos componentes são alternados entre eles: o ```Rigidbody``` ativa a *flag* ```isKinematic``` sempre que não precisamos da simulação de física, enquanto ativamos o componente do ```NavMeshAgent``` para possibilitar que o inimigo se mova pelo *NavMesh*. Quando queremos o contrário, só invertemos o ```isKinematic``` do ```Rigidbody``` e a ativação do componente ```NavMeshAgent```. Para correção de mais um tipo de conflito do *NavMesh* com o ```Rigidbody```, também aplicamos a correção do tópico [Áreas Seguras para o NavMesh](#áreas-seguras-para-o-navmesh).
 
 # Áreas Seguras para o NavMesh
 
@@ -605,4 +613,4 @@ Quando o jogador encosta no **portal**, ele recebe dano e é teletransportado pa
 
 Neste projeto, pude colocar em prova minhas habilidades adquirida anteriormente em outros **projetos paralelos** e **TCPs**, e ter resultados muito mais polidos que antes, envolvendo **C#**, **POO**, **Unity** e **Git**.
 
-Apesar de ser um projeto mais simples, a necessidade de organizar a equipe seria fundamental para que não ocorresse problemas na produção, principalmente quando se trata de programação. Foi tranquilo trabalhar ao lado do outro programador, mas ainda é uma válida lição que pude tirar deste projeto.
+Apesar de ser um projeto mais simples, a necessidade de organizar a equipe foi fundamental para que não ocorresse problemas na produção, principalmente quando se trata de programação. Foi tranquilo trabalhar ao lado do outro programador, mas ainda é uma válida lição que pude tirar deste projeto.

@@ -22,7 +22,7 @@ description: |
 
 # Introdução
 
-Neste projeto, assumo a responsabilidade de programar um **jogo pra dispositivo móvel** sobre **entregas através de veículo de duas rodas**. Minha atuação no projeto foi **programando o jogo por inteiro**, pois eu era o único programador. Também precisei **implementar os assets**.
+Neste projeto, me encarreguei de programar um **jogo pra dispositivo móvel** sobre **entregas de moto**. Minha atuação no projeto foi **programando o jogo por inteiro**, pois eu era o único programador, no **Godot**. Também precisei **implementar os assets**.
 
 Este projeto foi realizado durante a pandemia de Covid-19, sendo produzido remotamente devido ao lockdown.
 
@@ -38,11 +38,11 @@ Além deste ter sido meu primeiro projeto de **jogo para dispositivo móvel**, t
 <video src="{{ "/assets/portfolio/deliverracer-personagem.mp4" }}" width="480" height="270" loop autoplay muted></video>
 </p>
 
-A mecânica do jogo consiste em tornar possível o jogador **pilotar a moto como o personagem**.
+O **personagem** do jogo se movimenta através de sua **moto**, e o jogador estará no controle.
 
 Optei pelo uso do ```KinematicBody``` para ter um objeto sem muita influência de simulação de física, precisava apenas de algo que pudesse colidir ou detectar colisão. ```Rigidbody``` atrapalharia a física da nossa **motinha** a longo prazo porque iria ter uma simulação de física funcionando enquanto a nossa física programada para **veículo** funcionaria em paralelo, causando muito conflito e resultados indesejados. Não utilizei ```CharacterBody``` porque ainda não existia esta *feature* no **Godot** 3.x. Também havia o ```VehicleBody```, mas não consegui aprender a utilizar e nem compreender a documentação.
 
-Tudo que envolve os cálculos de **física do veículo** fiz me guiando por tutoriais e pesquisas sobre cálculos de física. Em algumas partes, fui testando alguns cálculos empíricos e parte deles mostraram-se funcionar nos resultados. O **personagem** é controlado pelo teclado, controle ou botões virtuais na tela (para telas de toque).
+Tudo que tange os cálculos de física na **movimentação do veículo**, fiz me guiando em tutoriais e pesquisas sobre as fórmulas de físicas em si. Em algumas partes, fui testando alguns cálculos empíricos e parte deles mostraram-se funcionar nos resultados. O **personagem** é controlado pelo teclado, controle, botões virtuais na tela (para telas de toque) ou acelerômetro.
 
 No sistema ocorre:
 
@@ -214,11 +214,16 @@ func _on_WallImpactDetection_body_entered(body):
 
 O **objetivo** do jogador é **entregar** as comidas para os lugares requisitados. No estado atual do projeto, é possível realizar apenas uma entrega.
 
-O sistema conta com uma IU que indica o **local de entrega da comida**, vários eventos no cenário que faria a interação com o **objetivo**, uma seta apontando para o **local de entrega**, e um objeto que aparece no **local de entrega** para que o jogador saiba onde deve **entregar** a comida.
+O sistema conta com:
+
+- Uma IU que indica o **local de entrega da comida**;
+- Vários eventos no cenário que faria a interação com o **objetivo**;
+- Uma seta apontando para o **local de entrega**;
+- E um objeto que aparece no **local de entrega** para que o jogador saiba onde deve **entregar** a comida.
 
 <!-- TODO: Um diagrama -->
 
-O script foi criado pensado em ter vários **objetivos** seguindo os estados (```enum QuestState```) que se esperaria de uma **entrega de comida**. Mas na prática, havia um único objetivo.
+O script foi criado pensado em ter vários **objetivos** seguindo os estados (```enum QuestState```) que se esperaria de uma **entrega de comida**, mas na prática, havia apenas um objetivo.
 
 <p align="center">
 <video src="{{ "/assets/portfolio/deliverracer-objetivos-estrutura-hud.mp4" }}" loop autoplay muted></video>
@@ -361,7 +366,7 @@ func _process(delta):
 <video src="{{ "/assets/portfolio/deliverracer-configuracoes.mp4" }}" width="480" height="270" loop autoplay muted></video>
 </p>
 
-A pedido da produtora do projeto, fiz o **sistema de configurações**, onde o jogador pode configurar suas preferências e estas preferências serem salvas e carregadas. Adorei a ideia porque trouxe mais funcionalidade para o projeto e mais personalização para os jogadores.
+A pedido da produtora do projeto, fiz o **sistema de configurações**, onde o jogador pode configurar suas preferências e estas preferências serem salvas e carregadas. Adorei a ideia porque trouxe mais funcionalidades para o projeto e mais personalização para os jogadores.
 
 O jogador realiza as configurações na **janela de configurações** (acessível durante o jogo ou no menu inicial) e as configurações são salvas sempre que o jogador clica/toca no botão "OK".
 
@@ -612,7 +617,7 @@ No trecho de código acima é exibido tanto o teclado/gamepad, quanto o analógi
 <video src="{{ "/assets/portfolio/deliverracer-controles-gamepad.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
-Mesmo o jogo sendo criado para rodar em **dispositivos móveis**, os *inputs* estão o tempo inteiro esperando comandos do teclado e do **gamepad** (controle com ou sem fio que é possível de conectar no computador ou dispositivo móvel).
+Mesmo o jogo sendo criado para rodar em **dispositivos móveis**, os *inputs* estão o tempo inteiro esperando comandos do teclado e do **gamepad** (controle para jogar que é possível de conectar no computador ou dispositivo móvel).
 
 ```gdscript
 # ...
@@ -670,7 +675,7 @@ func try_kill_old_dir_pad():
 
 Na **janela de configurações**, é possível escolher um **tipo de câmera** que melhor se adéque ao perfil do jogador.
 
-Existe a **câmera em terceira pessoa** por padrão, e a **câmera em primeira pessoa** como escolha alternativa. A **alternação de câmera** ocorre bem no ```SettingsWindow```, quando o código está pronto para inicializar e quando o jogador clica no botão "OK". O código é simples, e consiste em simplesmente indicar à *engine* qual é a câmera atual que renderizará o jogo, apenas trocando a *flag* ```current``` das duas câmeras (```fp_camera``` para primeira pessoa, e ```tp_camera``` para terceira pessoa).
+Há a **câmera em terceira pessoa** definida por padrão, e a **câmera em primeira pessoa** como escolha alternativa. A **alternação de câmera** ocorre bem no ```SettingsWindow```, quando o código está pronto para inicializar e quando o jogador clica no botão "OK". O código é simples, e consiste em simplesmente indicar à *engine* qual é a câmera atual que renderizará o jogo, apenas trocando a *flag* ```current``` das duas câmeras (```fp_camera``` para primeira pessoa, e ```tp_camera``` para terceira pessoa).
 
 ```gdscript
 extends WindowDialog
@@ -713,7 +718,7 @@ A **câmera em primeira pessoa** fica dentro do jogador, em uma posição e âng
 <img src="{{ "/assets/portfolio/deliverracer-fp-camera-estrutura.jpg" }}" width="550" height="511" />
 </a></p>
 
-Já a **câmera em terceira pessoa** fica na cena de jogo com um script personalizado para seguir o jogador. Este script é bem simples, ele apenas segue o jogador com um certo atraso, para ficar um pouco mais elegante.
+Já a **câmera em terceira pessoa** fica na cena de jogo com um script personalizado para seguir o jogador. Este script é bem simples, ele apenas segue o jogador com um certo atraso para ficar um pouco mais elegante.
 
 ```gdscript
 extends Spatial
@@ -762,6 +767,6 @@ Apesar de eu me maravilhar com o uso da *engine*, não acho que a equipe tenha t
 
 # Lições Aprendidas
 
-Considerando ser um projeto de **jogo para dispositivo móvel**, realizar este projeto junto da equipe me fez concluir que aprender uma modalidade nova em um projeto não precisa ser complicado e pode ser muito mais simples do que parece. Criar um **jogo para dispositivo móvel** foi menos complicado do que parecia, porque as *engines* oferecem ferramentas excelentes para trabalharmos com isto.
+Considerando ser um projeto de **jogo para dispositivo móvel**, realizar este projeto junto da equipe me fez concluir que aprender uma modalidade nova em um projeto não precisa ser complicado e pode ser muito mais simples do que parece. Criar um **jogo para dispositivo móvel** foi menos complicado do que parecia porque as *engines* oferecem ferramentas excelentes para trabalharmos com isto.
 
 Também aprendi que precisamos ter uma comunicação clara e próxima dos membros da equipe para identificarmos se as posturas e mudanças no projeto são satisfatórias para todos, porque uma mudança pode afetar negativamente o trabalho de alguém.

@@ -31,7 +31,7 @@ Além de ser o primeiro **TCP** meu e de toda equipe, também foi o meu primeiro
 
 # Movimentação
 
-**Movimentação** básica de jogos de **plataforma 2D**. Devido às inexperiências com **C#** e principalmente **Unity**, fiz com que o controle de movimentação do jogador utilizasse Rigidbody, o que torna a movimentação muito deslizante. Contudo, hoje sei que o ideal seria o uso dos Character Controller para uso da física dos personagens.
+**Movimentação** básica de jogos de **plataforma 2D**. Devido às inexperiências com **C#** e principalmente **Unity**, fiz com que o controle de **movimentação** do jogador utilizasse **Rigidbody**, o que torna a movimentação muito deslizante. Contudo, hoje sei que o ideal seria o uso dos Character Controller para uso da física dos personagens.
 
 <p align="center">
 <img src="{{ "/assets/portfolio/kristian-frango-cabuloso-movement.GIF" }}" />
@@ -39,11 +39,11 @@ Além de ser o primeiro **TCP** meu e de toda equipe, também foi o meu primeiro
 
 # IA dos Inimigos
 
-A **IA dos inimigos** foi pensada para ser simples, para que fosse divertido para os jogadores e possível de desenvolver com minha inexperiência programando. Havia sido planejado para que o inimigo atacasse, mas não conseguimos fazer a tempo.
+A **IA dos inimigos** foi pensada para ser simples, para que fosse divertido para os jogadores e possível de desenvolver com minha inexperiência programando. Havia sido planejado para que o **inimigo** atacasse, mas não conseguimos fazer a tempo.
 
-Os inimigos sempre andam para alguma direção, essa direção é atualizada quando o inimigo pisa em uma plataforma diferente. Se o inimigo estiver na mesma plataforma que o jogador, ele irá seguir em direção ao jogador. Se o inimigo pisa em uma plataforma diferente do jogador, o inimigo anda na direção oposta à sua própria direção em relação ao centro da tela.
+Os **inimigos** sempre andam para alguma direção, essa direção é atualizada quando o **inimigo** pisa em uma plataforma diferente. Se o **inimigo** estiver na mesma plataforma que o jogador, seguirá em direção ao jogador. Se o **inimigo** pisa em uma plataforma diferente do jogador, andará na direção oposta à sua própria direção em relação ao centro da tela.
 
-O jogador morre ao encostar no inimigo.
+O jogador morre ao encostar no **inimigo**.
 
 <p align="center">
 <video src="{{ "/assets/portfolio/kristian-frango-cabuloso-enemies.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
