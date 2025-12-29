@@ -34,7 +34,7 @@ Além de ser o primeiro **TCP** meu e de toda equipe, também foi o meu primeiro
 **Movimentação** básica de jogos de **plataforma 2D**. Devido às inexperiências com **C#** e principalmente **Unity**, fiz com que o controle de **movimentação** do jogador utilizasse **Rigidbody**, o que torna a movimentação muito deslizante. Contudo, hoje sei que o ideal seria o uso dos Character Controller para uso da física dos personagens.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-movement.GIF" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-movement.GIF" />
 </p>
 
 # IA dos Inimigos
@@ -46,7 +46,7 @@ Os **inimigos** sempre andam para alguma direção, essa direção é atualizada
 O jogador morre ao encostar no **inimigo**.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-enemies.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-enemies.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 # Subir e Descer Escadas
@@ -73,18 +73,18 @@ Assumi a responsabilidade de **implementar as animações**. Para fins de otimiz
 Hoje, não teria proposto a ideia de utilizar **spritesheets** devido ao trabalho que dá ao animador e para quem fosse implementar. Inclusive, pesquisaria se realmente há eficácia performática utilizar animações em **spritesheets** na **Unity**.
 
 <p align="center">
-<a href="{{ "/assets/portfolio/kristian-frango-cabuloso-spritesheets-0.png" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-spritesheets-0.png" }}" width="286" height="295" />
+<a href="/assets/portfolio/kristian-frango-cabuloso-spritesheets-0.png" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-spritesheets-0.png" width="286" height="295" />
 </a>
-<a href="{{ "/assets/portfolio/kristian-frango-cabuloso-spritesheets-1.png" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-spritesheets-1.png" }}" width="286" height="295" />
+<a href="/assets/portfolio/kristian-frango-cabuloso-spritesheets-1.png" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-spritesheets-1.png" width="286" height="295" />
 </a>
 </p>
 
 # Outros
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-shoot.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-shoot.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 - **Mecânica de tiro;**

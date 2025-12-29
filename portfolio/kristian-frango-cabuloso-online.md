@@ -251,7 +251,7 @@ public class Spawner : GlobalEventListener
 A **contagem de ondas** é atualizada **online**, simplesmente atualizando o valor do nosso evento ```WaveEvent waveEvent``` e enviando-os aos clientes.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-waveevent.png" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-waveevent.png" />
 </p>
 
 ```cs
@@ -276,15 +276,15 @@ A **contagem de ondas** é atualizada **online**, simplesmente atualizando o val
 # Uso de Armas
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-uso-armas.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-uso-armas.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 O **Uso de Armas** é onde o jogador ou inimigo **controlam suas armas online**. Mas antes, vamos dar uma breve olhada na **arma** em si.
 
 ## Arma
 
-<p align="center"><a href="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-arma.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-arma.jpg" }}" />
+<p align="center"><a href="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-arma.jpg" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-arma.jpg" />
 </a></p>
 
 A **arma** é controlada externamente pelo ```WeaponController```. Apesar de funcionar offline, o ```WeaponController``` cria as condições para que a **arma** (```Weapon```) funcione **online**.
@@ -384,7 +384,7 @@ public class Weapon : MonoBehaviour
 ## Projétil
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-projetil.jpg" }}" width="570" height="290" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-projetil.jpg" width="570" height="290" />
 </p>
 
 O **projétil** é um simples objeto que percorre a cena do jogo até atingir (colidir) alguma vítima (que são objetos com o componente ```Health``` -- explico este componente em [Sistema de Vida](#sistema-de-vida)) e dar dano.
@@ -502,11 +502,11 @@ public class Health : EntityBehaviour<IKFCPlayerState>
 ## Controlador de Armas
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-jogador-controladorarma.jpg" }}" height="397" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-jogador-controladorarma.jpg" height="397" />
 </p>
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-inimigo-controladorarma.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-inimigo-controladorarma.jpg" />
 </p>
 
 E finalmente, o **controlador de armas**! O **controle de armas** possibilita a intermediação do *input* do jogador à **arma**, possibilitando a ação de **atirar**, **recarregar** e de **troca de arma**. O componente ```WeaponController```, que abordaremos aqui, pode ser adicionado em jogadores, inimigos e NPCs para **controle de suas armas**.
@@ -576,7 +576,7 @@ public class WeaponController : EntityBehaviour<IKFCPlayerState>
 ```
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-weaponindex.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-weaponindex.jpg" />
 </p>
 
 ### Troca de Armas
@@ -846,7 +846,7 @@ public class EnemyCharacterController : EntityBehaviour<IKFCPlayerState>
 # Coleta de Arma
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-coleta-armas.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-coleta-armas.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 É possível **coletar armas** no jogo, e a **arma** era adicionada **online**. Porém, a **arma a ser coletada** em si, era local.
@@ -855,8 +855,8 @@ A **arma** só podia ser **coletada** uma vez pelo jogador. A **coleta** não im
 
 <!-- Só existia uma **arma a ser coletada** e ela só era **coletada** uma única vez para cada jogador. Devido ao prazo já corrido no final do projeto, não tivemos tempo de pensar em um *level design* interessante para a **coleta de armas** e nem criar mais **armas** (na prática, só há Pistola e Shotgun). -->
 
-<p align="center"><a href="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-pickup.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estrutura-pickup.jpg" }}" />
+<p align="center"><a href="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-pickup.jpg" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-estrutura-pickup.jpg" />
 </a></p>
 
 ```cs
@@ -892,7 +892,7 @@ public class WeaponPickup : MonoBehaviour
 ```
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-weaponpickuppath.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-weaponpickuppath.jpg" />
 </p>
 
 O ```string PlayerCharacterController.state.PlayerPickupWeaponPath``` é o caminho do *prefab* da **arma a ser coletada**. Esta variável é replicada **online** pelo **Photon Bolt**. O ```WeaponController``` trata da **coleta de arma** sendo replicada com nosso *callback* ```Photon_AddWeapon()```.
@@ -950,7 +950,7 @@ O **sistema de vida** do jogo possibilita a um jogador, inimigo ou NPC **receber
 ## Dano e Morte
 
 <p align="center">
-<video src=" {{ "/assets/portfolio/kristian-frango-cabuloso-online-matar-morrer.mp4" }}" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-matar-morrer.mp4" height="270" controls loop autoplay muted></video>
 </p>
 
 Basicamente, o método ```ReceiveDamage(int damage, bool damageFromPlayer)``` retorna ```true``` caso o objeto tenha sido **debilitado** ou **morto**, do contrário, ```false```.
@@ -1065,7 +1065,7 @@ public class Health : EntityBehaviour<IKFCPlayerState>
 ```
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerhealth.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerhealth.jpg" />
 </p>
 
 Se o objeto ficou com a **vida** (```health```) igual a ```0``` e possuir um componente ```PlayerReviveController```, ele não **morrerá** diretamente mas ficará **debilitado**. -- Abordo isso em [Reanimação entre Jogadores](#reanimação-entre-jogadores). -- Mas caso NÃO possua o componente ```PlayerReviveController```, **morrerá** diretamente.
@@ -1073,7 +1073,7 @@ Se o objeto ficou com a **vida** (```health```) igual a ```0``` e possuir um com
 ## Regeneração
 
 <p align="center">
-<video src=" {{ "/assets/portfolio/kristian-frango-cabuloso-online-regen.mp4" }}" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-regen.mp4" height="270" controls loop autoplay muted></video>
 </p>
 
 A **regeneração** funciona de forma muito simples:
@@ -1196,7 +1196,7 @@ public class Health : EntityBehaviour<IKFCPlayerState>
 ## Debilitação
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-debilitacao.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-debilitacao.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 O método ```TriggerTimeToDie()``` cancela a movimentação do jogador, o rotaciona (para parecer que está caído no chão) e troca seu estado para **"debilitado"** (```ReviveState.Dying```).
@@ -1246,7 +1246,7 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 Ah! O ```state.PlayerIsDying``` é a *flag* **online** que indica se o jogador está **debilitado** ou não, para que um jogador consiga identificar se o outro **debilitado**.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerisdying.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerisdying.jpg" />
 </p>
 
 O jogador fica impossibilitado de andar quando **debilitado**.
@@ -1320,7 +1320,7 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 ## Reanimar e Ser Reanimado
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-reanimar-e-ser-reanimado.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-reanimar-e-ser-reanimado.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 Antes de explicar como é **ser reanimado**, é importante primeiro explicar como é **reanimar outro jogador**.
@@ -1446,7 +1446,7 @@ public class PlayerReviveController : EntityBehaviour<IKFCPlayerState>
 ```
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerrevive.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playerrevive.jpg" />
 </p>
 
 O trecho ```state.PlayerReviveEntity = otherPlayerHealth.entity;``` é muito importante, pois ele notifica a todos os jogadores que **jogador A reanimou jogador B** (```otherPlayerHealth.entity```). Isso foi feito junto da adição de um *callback*.
@@ -1660,7 +1660,7 @@ public class EnemyCharacterController : EntityBehaviour<IKFCPlayerState>
 ```
 
 <p align="center">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playertransforms.jpg" }}" />
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-photon-playerstate-playertransforms.jpg" />
 </p>
 
 A **inteligência artificial (IA) dos inimigos** simplesmente utiliza do conceito de **máquina de estado finita (FSM)** para determinar o **comportamento do inimigo** para cada um dos seus estados.
@@ -1763,7 +1763,7 @@ O método ```GroundCheck()``` simplesmente faz o **inimigo** parar de cair se o 
 ## Processamento de Cada Estado do Inimigo
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-estados-inimigo-pt.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-estados-inimigo-pt.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 Agora, comentarei sobre cada método de atualização utilizado na **máquina de estado** da **IA do nosso inimigo**. Já expliquei como cada um desses métodos são chamados, em código, [logo acima](#ia-e-movimentação-de-inimigos).
@@ -1915,7 +1915,7 @@ public class EnemyCharacterController : EntityBehaviour<IKFCPlayerState>
 Em ```TryJump(float followTargetYPosition)```, o **inimigo** salta mais ou menos na altitude de seu alvo caso esteja no chão, dentro do tempo de espera e acima da distância mínima de altitude.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-pulo-inimigo.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/kristian-frango-cabuloso-online-pulo-inimigo.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 ### Método ```BackBaseUpdate()```
@@ -2005,12 +2005,12 @@ Os **dados** também são enviados quando o jogador fecha o jogo.
 
 ## Dados Comuns
 
-<p align="center"><a href="{{ "/assets/portfolio/kristian-frango-cabuloso-online-tabela-dados-comuns-tempo.png" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-tabela-dados-comuns-tempo.png" }}" height="365" />
+<p align="center"><a href="/assets/portfolio/kristian-frango-cabuloso-online-tabela-dados-comuns-tempo.png" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-tabela-dados-comuns-tempo.png" height="365" />
 </a></p>
 
-<p align="center"><a href="{{ "/assets/portfolio/kristian-frango-cabuloso-online-tabelas-interacao-jogadores.png" }}" target="_blank">
-<img src="{{ "/assets/portfolio/kristian-frango-cabuloso-online-tabelas-interacao-jogadores.png" }}" height="423" />
+<p align="center"><a href="/assets/portfolio/kristian-frango-cabuloso-online-tabelas-interacao-jogadores.png" target="_blank">
+<img src="/assets/portfolio/kristian-frango-cabuloso-online-tabelas-interacao-jogadores.png" height="423" />
 </a></p>
 
 Bem, em ```SendStatiscsAnalytics()```, é possível observar os **dados** básicos e os **dados** de interação entre jogadores que são enviados para **telemetria**. O nome dos **dados** são bem autoexplicativos sobre suas definições.

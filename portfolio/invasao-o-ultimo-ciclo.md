@@ -37,11 +37,11 @@ A **câmera** teve seu *design* desenvolvido e testado em forma colaborativa, co
 Quando o ângulo e a distância da **câmera** foram decididos, eu e o outro programador da equipe fizemos a codificação em um **Dojo**, pois nenhum de nós dois possuíamos experiência **programando de forma colaborativa**, e eu particularmente também não possuía experiência em **programar jogos em espaço 3D**.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-camera.mp4" }}" loop autoplay muted></video>
+<video src="/assets/portfolio/invasao-o-ultimo-ciclo-camera.mp4" loop autoplay muted></video>
 </p>
 
-<p align="center"><a href="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-camera.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-camera.jpg" }}" />
+<p align="center"><a href="/assets/portfolio/invasao-o-ultimo-ciclo-camera.jpg" target="_blank">
+<img src="/assets/portfolio/invasao-o-ultimo-ciclo-camera.jpg" />
 </a></p>
 
 ## Movimentação da Câmera
@@ -129,7 +129,7 @@ Os **inimigos** no jogo realizavam uma curva muito lenta ao andar, e isso não e
 {% endcomment %}
 
 <p align="center">
-<video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-movimentacao-inimigos.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/invasao-o-ultimo-ciclo-movimentacao-inimigos.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 ## *Buffs* e *Debuffs* em Inimigos
@@ -142,7 +142,7 @@ No projeto, temos apenas o ***buff* e *debuff*** da **Torre de Gelo** e do **ini
 - O **inimigo XR3** aumenta sua própria velocidade por alguns segundos, necessitando aguardar um tempo (*cooldown*) para usar o ***buff*** novamente.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-buffs-debuffs-inimigos.mp4" }}" controls loop autoplay muted></video>
+<video src="/assets/portfolio/invasao-o-ultimo-ciclo-buffs-debuffs-inimigos.mp4" controls loop autoplay muted></video>
 </p>
 
 Apesar do sistema funcionar na prática, a codificação tinha alguns problemas:
@@ -393,15 +393,15 @@ Hoje, eu faria os ***buffs/debuffs*** em uma classe separada da classe **inimigo
 # Tutorial
 
 <p align="center">
-<video src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.mp4" }}" controls loop autoplay muted></video>
+<video src="/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.mp4" controls loop autoplay muted></video>
 </p>
 
 No projeto havia um discreto **tutorial**. No vídeo acima é possível observar um retângulo vermelho sobre alguns botões específicos, que é onde o **tutorial** está indicando para onde o jogador deve clicar.
 
 O código possuía várias partes *hardcodadas*; as ações dos botões ocorriam pela *interface* da **Unity** (como exibido na imagem abaixo); e fazia uso do `GameObject.Find` ao invés de `[SerializeField]` ou `public` para alocar/utilizar os elementos da interface, o que acaba sendo menos performático e menos flexível para não programadores alterar os elementos da interface que o **sistema de tutorial** utilizaria. O **tutorial** foi adicionado e requisitado bem no final do projeto ~~(eu literalmente dormi no teclado na madrugada do dia da apresentação)~~, tive uma semana ou menos para concluí-lo.
 
-<p align="center"><a href="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.jpg" }}" width="315" height="538" />
+<p align="center"><a href="/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.jpg" target="_blank">
+<img src="/assets/portfolio/invasao-o-ultimo-ciclo-tutorial.jpg" width="315" height="538" />
 </a></p>
 
 ```cs
@@ -820,11 +820,11 @@ Fotos da apresentação do projeto no auditório do **IFRJ Campus Eng. Paulo de 
 
 <table border="0">
 <tr>
-<td><p align="center"><a href="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-0.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-0.jpg" }}" />
+<td><p align="center"><a href="/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-0.jpg" target="_blank">
+<img src="/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-0.jpg" />
 </a></p></td>
-<td><p align="center"><a href="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-1.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-1.jpg" }}" />
+<td><p align="center"><a href="/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-1.jpg" target="_blank">
+<img src="/assets/portfolio/invasao-o-ultimo-ciclo-foto-tcp-1.jpg" />
 </a></p></td>
 </tr>
 <tr>

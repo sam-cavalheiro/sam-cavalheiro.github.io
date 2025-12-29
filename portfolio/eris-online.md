@@ -35,7 +35,7 @@ Este foi meu primeiro projeto realizado com uma **equipe com mais de vinte pesso
 # Interação Online com Photon PUN
 
 <p align="center">
-<video src="{{ "/assets/portfolio/eris-online-interacao-online.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/eris-online-interacao-online.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 Eu e outros programadores do projeto decidimos que utilizaríamos o **Photon PUN** como solução para que a **interação online** no jogo seja facilitada, também possibilitando utilizar os **servidores** gratuitos disponibilizados pela **Photon** para o jogo.
@@ -188,7 +188,7 @@ public class NetworkSetup : MonoBehaviour
 # Autenticação
 
 <p align="center">
-<video src="{{ "/assets/portfolio/eris-online-autenticacao.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/eris-online-autenticacao.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 > Apesar de eu ter sido o primeiro a desenvolver este sistema para este projeto, o mesmo posteriormente passou por muitas alterações feitas por outro programador, inclusive adicionando uma *feature*. Os trechos de código que exibo em meu portfólio são trechos que eu mesmo escrevi.
@@ -452,7 +452,7 @@ public class AuthenticationController : MonoBehaviourPunCallbacks
 # Combate
 
 <p align="center">
-<video src="{{ "/assets/portfolio/eris-online-combate.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/eris-online-combate.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 O **sistema de combate** é muito simples: O jogador ataca seu alvo com base em seus parâmetros, e o inimigo faz o mesmo. Um ataque é desferido a cada segundo de intervalo (parâmetro de ataque: tempo de espera). Infelizmente o sistema não ficou muito polido e careceu de testes, o que levou a possuir alguns *bugs*. A parte mais desafiadora foi conseguir fazer o **sistema de combate** funcionar **online**.
@@ -460,7 +460,7 @@ O **sistema de combate** é muito simples: O jogador ataca seu alvo com base em 
 ## Parâmetros de Combate
 
 <p align="center">
-<img src="{{ "/assets/portfolio/eris-online-parametros.jpg" }}" />
+<img src="/assets/portfolio/eris-online-parametros.jpg" />
 </p>
 
 Antes de explicar como funciona a [interação em combate](#interação-em-combate), vou explicar como funciona os **parâmetros do jogo utilizado em combate**.
@@ -916,7 +916,7 @@ public class PlayerController : MonoBehaviour
 # Inimigos
 
 <p align="center">
-<video src="{{ "/assets/portfolio/eris-online-inimigos.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/eris-online-inimigos.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 Programar os **inimigos** foi uma parte bem desafiadora do projeto, pois colocaria toda implementação do **Photon** realizada em prática. Apesar de se tratar de um sistema aparentemente simples, suas lógicas são complexas de se programar, principalmente por ser uma interação **online**. Infelizmente o desafio foi tanto que ficou com notórios *bugs*, mesmo no fim do projeto.

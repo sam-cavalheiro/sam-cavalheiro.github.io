@@ -33,7 +33,7 @@ A equipe do projeto conta com 8 membros, 2 destes membros atuavam como **program
 # Billboard
 
 <p align="center">
-<video src="{{ "/assets/portfolio/time-kickerz-billboard.mp4" }}" controls loop autoplay muted></video>
+<video src="/assets/portfolio/time-kickerz-billboard.mp4" controls loop autoplay muted></video>
 </p>
 
 Considerando que o jogo pretendia **misturar 2D (para personagens) com 3D (para cenários)**, foi necessário fazer com que os **objetos "2D"** (planos chapados usando um *sprite* como textura) sempre **olhassem para a câmera** para passar convencer melhor de que se tratava de um **objeto em 2D**, e não um papel.
@@ -88,7 +88,7 @@ O componente ```Billboard``` era inserido nos inimigos e no jogador, sendo um ob
 > Na imagem abaixo há um objeto com o nome de "Hitbox", mas ele está exercendo o papel do *hurtbox*. Isto foi um erro de digitação.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/time-kickerz-billboard-estrutura.jpg" }}" />
+<img src="/assets/portfolio/time-kickerz-billboard-estrutura.jpg" />
 </p>
 
 # Movimentação do Jogador
@@ -293,7 +293,7 @@ O método ```RefreshMultiplicationPhysicScale()``` aumenta a escala da **física
 # Inimigo Chutável
 
 <p align="center">
-<video src="{{ "/assets/portfolio/time-kickerz-chutavel.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/time-kickerz-chutavel.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 O componente ```Kickable``` define que um objeto será ***chutável***, ou seja, poderá receber **chutes** do jogador. Apesar de eu não ter criado este script inicialmente, fiz a maior parte das alterações.
@@ -399,13 +399,13 @@ Para lidar com isto, o uso de ambos componentes são alternados entre eles: o ``
 # Áreas Seguras para o NavMesh
 
 <p align="center">
-<video src="{{ "/assets/portfolio/time-kickerz-navmesh-safe-area-pt.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/time-kickerz-navmesh-safe-area-pt.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 Quando os inimigos saem voando por receberem um chute, eles desligam seus ```NavMeshAgent``` e ligam o ```isKinematic``` de seus ```Rigidbody``` (explico este processo no tópico [Inimigo Chutável](#inimigo-chutável)). Quando esta troca é realizada, e o ```Rigidbody``` cai **fora da malha do *NavMesh***, o ```NavMeshAgent``` será incapaz de se locomover quando o componente for reativado, pois está **fora de uma área válida**. Criei este sistema para **corrigir** esta problema.
 
-<p align="center"><a href="{{ "/assets/portfolio/time-kickerz-navmesh-safe-area-estrutura.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/time-kickerz-navmesh-safe-area-estrutura.jpg" }}" />
+<p align="center"><a href="/assets/portfolio/time-kickerz-navmesh-safe-area-estrutura.jpg" target="_blank">
+<img src="/assets/portfolio/time-kickerz-navmesh-safe-area-estrutura.jpg" />
 </a></p>
 
 
@@ -530,7 +530,7 @@ public class Kickable : MonoBehaviour
 O **portal** é para onde o jogador precisa chutar os inimigos. Ao chutar um inimigo para o **portal**, o sistema de levas contabiliza a morte do inimigo e faz seu tratamento.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/time-kickerz-portal.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/time-kickerz-portal.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 ```cs
@@ -573,7 +573,7 @@ Apesar de existir uma comparação de linhas temporais em ```k.CompareTimeline(t
 Quando o jogador encosta no **portal**, ele recebe dano e é teletransportado para o **ponto de *reset*** se o dano ocorreu. O dano pode não ocorrer caso o jogador esteja com invulnerabilidade por ter recebido outro dano em um curto período de tempo.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/time-kickerz-portal-jogador.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/time-kickerz-portal-jogador.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 ```cs

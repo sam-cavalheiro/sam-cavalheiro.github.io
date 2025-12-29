@@ -35,7 +35,7 @@ Além deste ter sido meu primeiro projeto de **jogo para dispositivo móvel**, t
 # Personagem e seu Veículo
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-personagem.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-personagem.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 O **personagem** do jogo se movimenta através de sua **moto**, e o jogador estará no controle.
@@ -52,8 +52,8 @@ No sistema ocorre:
 - Gravidade do **veículo**;
 - Troca de rotação caso o **jogador** suba em uma superfície rotacionada (rampa, por exemplo).
 
-<p align="center"><a href="{{ "/assets/portfolio/deliverracer-personagem.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/deliverracer-personagem.jpg" }}" width="550" height="390" />
+<p align="center"><a href="/assets/portfolio/deliverracer-personagem.jpg" target="_blank">
+<img src="/assets/portfolio/deliverracer-personagem.jpg" width="550" height="390" />
 </a></p>
 
 ```gdscript
@@ -209,7 +209,7 @@ func _on_WallImpactDetection_body_entered(body):
 # Objetivos de Entregas
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-objetivos.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-objetivos.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 O **objetivo** do jogador é **entregar** as comidas para os lugares requisitados. No estado atual do projeto, é possível realizar apenas uma entrega.
@@ -226,7 +226,7 @@ O sistema conta com:
 O script foi criado pensado em ter vários **objetivos** seguindo os estados (```enum QuestState```) que se esperaria de uma **entrega de comida**, mas na prática, havia apenas um objetivo.
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-objetivos-estrutura-hud.mp4" }}" loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-objetivos-estrutura-hud.mp4" loop autoplay muted></video>
 </p>
 
 Cada "Quest\_n" dentro da estrutura acima representa uma **etapa do objetivo** (apesar do nome não intuir...) com relação ao ```enum QuestState```:
@@ -314,7 +314,7 @@ func _on_TextureButton_button_down():
 Para um objeto no cenário interagir com alguma **etapa do objetivo**, era necessário apenas criar um script (eu optei por fazê-los embutidos no objeto) que criasse uma condição para chamar ```complete_current_quest()``` do ```Quest```. Estes objetos ficam necessariamente no cenário para que o indicador de **objetivos** e a seta possam indicá-lo.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-objetivos-estrutura-game.png" }}" />
+<img src="/assets/portfolio/deliverracer-objetivos-estrutura-game.png" />
 </p>
 
 Um exemplo comum, é o jogador chegar em uma área específica e isto avançar para próxima **etapa do objetivo**. Abaixo, apenas _um_ código de exemplo comum de como a interação ocorria:
@@ -331,8 +331,8 @@ func _on_Quest_1_body_entered(body):
 
 A seta presente na HUD aponta para onde está localizado o **objetivo**. De frame em frame (```func _process(delta)```) se posiciona para onde o jogador está e rotaciona para o **objetivo**. Ela é um ```Viewport``` que possui um mundo próprio.
 
-<p align="center"><a href="{{ "/assets/portfolio/deliverracer-objetivos-estrutura-seta.png" }}" target="_blank">
-<img src="{{ "/assets/portfolio/deliverracer-objetivos-estrutura-seta.png" }}" width="570" height="514" />
+<p align="center"><a href="/assets/portfolio/deliverracer-objetivos-estrutura-seta.png" target="_blank">
+<img src="/assets/portfolio/deliverracer-objetivos-estrutura-seta.png" width="570" height="514" />
 </a></p>
 
 ```gdscript
@@ -363,7 +363,7 @@ func _process(delta):
 # Configurações
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-configuracoes.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-configuracoes.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 A pedido da produtora do projeto, fiz o **sistema de configurações**, onde o jogador pode configurar suas preferências e estas preferências serem salvas e carregadas. Adorei a ideia porque trouxe mais funcionalidades para o projeto e mais personalização para os jogadores.
@@ -506,11 +506,11 @@ Na **janela de configurações**, é possível escolher um **tipo de controle** 
 Independente de qual **tipo de controle** o jogador configurar, com exceção do tipo **Gamepad**, sempre estará presenta na HUD dois botões: um para acelerar e outro para frear. Ambos são simples nodes ```TouchScreenButton``` configurados pela interface do **Godot** para pressionar as ações para acelerar e frear.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-botoes-basicos-estrutura.png" }}" />
+<img src="/assets/portfolio/deliverracer-botoes-basicos-estrutura.png" />
 </p>
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-botao-acelerar-acao.png" }}" /><img src="{{ "/assets/portfolio/deliverracer-botao-frear-acao.png" }}" />
+<img src="/assets/portfolio/deliverracer-botao-acelerar-acao.png" /><img src="/assets/portfolio/deliverracer-botao-frear-acao.png" />
 </p>
 
 
@@ -518,7 +518,7 @@ Independente de qual **tipo de controle** o jogador configurar, com exceção do
 ### Toque na Tela
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-controles-touch.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-controles-touch.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 Existem duas **opções de controle de toque de tela**: **controle digital** (Setas) e o **controle analógico** (Guidão).
@@ -526,17 +526,17 @@ Existem duas **opções de controle de toque de tela**: **controle digital** (Se
 O **controle digital** são apenas duas setas do node ```TouchScreenButton``` configurados pela interface do **Godot** para pressionar as ações para o jogador se mover para esquerda e para direita.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-botoes-setas-estrutura.png" }}" />
+<img src="/assets/portfolio/deliverracer-botoes-setas-estrutura.png" />
 </p>
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-botao-seta-esquerda-acao.png" }}" /><img src="{{ "/assets/portfolio/deliverracer-botao-seta-direita-acao.png" }}" />
+<img src="/assets/portfolio/deliverracer-botao-seta-esquerda-acao.png" /><img src="/assets/portfolio/deliverracer-botao-seta-direita-acao.png" />
 </p>
 
 Já o **controle analógico** é um script. O *input* de toque na tela é tratado em ```func _input(event)```, verificando se o jogador tocou na região da imagem do **analógico**.
 
 <p align="center">
-<img src="{{ "/assets/portfolio/deliverracer-botao-analogico-estrutura.png" }}" />
+<img src="/assets/portfolio/deliverracer-botao-analogico-estrutura.png" />
 </p>
 
 ```gdscript
@@ -574,7 +574,7 @@ func _input(event):
 ### Acelerômetro
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-controles-acelerometro.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-controles-acelerometro.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 O **controle por acelerômetro** é muito simples. Baseada na rotação da tela do celular ou tablet do usuário, foi possível determinar para qual direção o jogador pretendia ir.
@@ -614,7 +614,7 @@ No trecho de código acima é exibido tanto o teclado/gamepad, quanto o analógi
 ### Gamepad
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-controles-gamepad.mp4" }}" width="480" height="270" controls loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-controles-gamepad.mp4" width="480" height="270" controls loop autoplay muted></video>
 </p>
 
 Mesmo o jogo sendo criado para rodar em **dispositivos móveis**, os *inputs* estão o tempo inteiro esperando comandos do teclado e do **gamepad** (controle para jogar que é possível de conectar no computador ou dispositivo móvel).
@@ -670,7 +670,7 @@ func try_kill_old_dir_pad():
 ## Alternação de Câmera
 
 <p align="center">
-<video src="{{ "/assets/portfolio/deliverracer-camera.mp4" }}" width="480" height="270" loop autoplay muted></video>
+<video src="/assets/portfolio/deliverracer-camera.mp4" width="480" height="270" loop autoplay muted></video>
 </p>
 
 Na **janela de configurações**, é possível escolher um **tipo de câmera** que melhor se adéque ao perfil do jogador.
@@ -714,8 +714,8 @@ func _on_Ok_Button_button_up():
 
 A **câmera em primeira pessoa** fica dentro do jogador, em uma posição e ângulo que possibilita enxergar apenas as mãos do personagem, guidão da motocicleta e a estrada. Não há nenhum código aqui.
 
-<p align="center"><a href="{{ "/assets/portfolio/deliverracer-fp-camera-estrutura.jpg" }}" target="_blank">
-<img src="{{ "/assets/portfolio/deliverracer-fp-camera-estrutura.jpg" }}" width="550" height="511" />
+<p align="center"><a href="/assets/portfolio/deliverracer-fp-camera-estrutura.jpg" target="_blank">
+<img src="/assets/portfolio/deliverracer-fp-camera-estrutura.jpg" width="550" height="511" />
 </a></p>
 
 Já a **câmera em terceira pessoa** fica na cena de jogo com um script personalizado para seguir o jogador. Este script é bem simples, ele apenas segue o jogador com um certo atraso para ficar um pouco mais elegante.
