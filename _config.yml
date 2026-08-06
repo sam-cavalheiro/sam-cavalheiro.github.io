@@ -32,17 +32,19 @@ paginate: 6
 paginate_path: /page:num/
 
 # Tracker
-analytics: UA-83979019-1
+analytics: #UA-83979019-1
 
 # Comments
 disqus: no
 disqus-shortname: webjeda-demo
 
 #social
-facebook: http://facebook.com/
-quora: http://quora.com/
-twitter: http://twitter.com/
-github: http://github.com/
+curriculum: /assets/curriculum.pdf
+facebook:
+github: http://github.com/sam-cavalheiro
+itchio: https://samcavalheiro.itch.io
+quora:
+twitter:
 email: sam.cavalheiro@outlook.com
 
 #facebook like box
