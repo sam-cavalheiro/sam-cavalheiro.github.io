@@ -39,13 +39,15 @@ disqus: no
 disqus-shortname: webjeda-demo
 
 #social
-curriculum: /assets/curriculum.pdf
+curriculum: /curriculum.pdf
 facebook:
 github: http://github.com/sam-cavalheiro
 itchio: https://samcavalheiro.itch.io
+linkedin: https://www.linkedin.com/in/sam-cavalheiro
 quora:
 twitter:
 email: sam.cavalheiro@outlook.com
+telephone: 5521983299668
 
 #facebook like box
 fb-like-box: no
