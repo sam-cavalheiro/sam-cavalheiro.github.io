@@ -4,9 +4,8 @@ title: Contato
 permalink: /contact/
 ---
 
-<div style="display:flex;">
-  <ul>
-  <!-- <ul style="width:50%;"> -->
+<div class="contact-links">
+  <ul class="contact-links-column">
     {% if site.github %}
       <li class="contact github">
         <a target="_blank" href="{{site.github}}">
@@ -29,8 +28,7 @@ permalink: /contact/
       </li>
     {% endif %}
   </ul>
-  <!-- <ul style="width:50%;"> -->
-  <ul>
+  <ul class="contact-links-column">
     {% if site.email %}
       <li class="contact email">
         <a href="mailto:{{site.email}}"><i class="fa fa-envelope"></i> {{ site.email }}</a>
