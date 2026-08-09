@@ -1,0 +1,67 @@
+---
+layout: page
+title: Contato
+permalink: /contact/
+---
+
+<div style="display:flex;">
+  <ul>
+  <!-- <ul style="width:50%;"> -->
+    {% if site.github %}
+      <li class="contact github">
+        <a target="_blank" href="{{site.github}}">
+          <i class="fa fa-github-square"></i> {{ site.github | remove_first: "http://github.com/" }}
+        </a>
+      </li>
+    {% endif %}
+    {% if site.itchio %}
+      <li class="contact itchio">
+        <a target="_blank" href="{{site.itchio}}">
+          <img src="/images/itchio.svg" /> {{ site.itchio | remove_first: "https://" }}
+        </a>
+      </li>
+    {% endif %}
+    {% if site.linkedin %}
+      <li class="contact linkedin">
+        <a target="_blank" href="{{site.linkedin}}">
+          <i class="fa fa-linkedin-square"></i> {{ site.linkedin | remove_first: "https://www.linkedin.com/" }}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+  <!-- <ul style="width:50%;"> -->
+  <ul>
+    {% if site.email %}
+      <li class="contact email">
+        <a href="mailto:{{site.email}}"><i class="fa fa-envelope"></i> {{ site.email }}</a>
+      </li>
+    {% endif %}
+    {% if site.telephone %}
+      {% assign telNumPart1 = site.telephone | slice: 0, 2 %}
+      {% assign telNumPart2 = site.telephone | slice: 2, 2 %}
+      {% assign telNumPart3 = site.telephone | slice: 4, 5 %}
+      {% assign telNumPart4 = site.telephone | slice: 9, 4 %}
+      <li class="contact telephone">
+        <div class="dropdown show">
+          <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-phone-square" aria-hidden="true"></i> +{{ telNumPart1 }} ({{ telNumPart2 }}) {{ telNumPart3 }}-{{ telNumPart4 }} ⯆
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="tel:{{ site.telephone }}"><i class="fa fa-phone" aria-hidden="true"></i> Telefone</a>
+            <a class="dropdown-item" href="https://wa.me/{{ site.telephone }}"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+            <a class="dropdown-item" href="https://t.me/{{ site.telephone }}"><i class="fa fa-telegram" aria-hidden="true"></i> Telegram</a>
+          </div>
+        </div>
+      </li>
+    {% endif %}
+    {% if site.curriculum %}
+      <li class="contact curriculum">
+        <a target="_blank" href="{{ site.curriculum }}"><i class="fa fa-file-text"></i> Currículo</a>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+
+<p>Acesse minhas redes ou entre em contato comigo através desta página. Responderei o mais rápido possível!</p>
+<p>Caso queira ver minha <b>biografia</b> ou meu <b>portfólio</b> de desenvolvimento de jogos, <a href="/">volte ao início</a>.</p>
