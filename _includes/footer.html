@@ -23,9 +23,13 @@
         <a target="_blank" href="{{site.github}}"
           ><li class="social github"><i class="fa fa-github-square"></i></li
         ></a>
+        {% endif %} {% if site.linkedin %}
+        <a target="_blank" href="{{site.linkedin}}"
+          ><li class="social linkedin"><i class="fa fa-linkedin-square" aria-hidden="true"></i></li
+        ></a>
         {% endif %} {% if site.itchio %}
         <a target="_blank" href="{{site.itchio}}"
-          ><li class="social"><img src="/images/itchio.svg" style="fill: blue;" /></li
+          ><li class="social"><img src="/images/itchio.svg" /></li
         ></a>
         {% endif %} {% if site.quora %}
         <a target="_blank" href="{{site.quora}}"
@@ -36,7 +40,7 @@
           ><li class="social twitter"><i class="fa fa-twitter-square"></i></li
         ></a>
         {% endif %} {% if site.email %}
-        <a target="_blank" href="mailto:{{site.email}}"
+        <a href="mailto:{{site.email}}"
           ><li class="social email"><i class="fa fa-envelope"></i></li
         ></a>
         {% endif %}
