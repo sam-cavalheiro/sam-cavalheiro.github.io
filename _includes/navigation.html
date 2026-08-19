@@ -22,10 +22,11 @@
       <li class="nav-item">
         <a class="nav-link" href={{"/contact/" | relative_url}}>Contato</a>
       </li>
-      <li class="nav-item">
+      <!-- A ideia é ser um nav-item, mas provisoriamente utilizaremos um
+           nav-item dropdown só para conseguirmos escolher o idioma. --> 
+      <!-- <li class="nav-item">
         <a class="nav-link" href="{{ site.curriculum }}" target="_blank">Currículo</a>
-      </li>
-      <!--
+      </li> -->
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -36,11 +37,12 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Dropdown
+          Currículo/Resumé
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" target="_blank" href="{{site.curriculum}}">🇧🇷 Currículo (Português)</a>
+          <a class="dropdown-item" target="_blank" href="{{site.curriculum_english}}">🇺🇸 Resumé (English)</a>
+          <!--
           <div class="dropdown-divider"></div>
           <a
             class="dropdown-item"
@@ -48,8 +50,10 @@
             href="https://jekyll-themes.com"
             >More Themes</a
           >
+          -->
         </div>
       </li>
+      <!--
       <li class="nav-item">
         <a class="nav-link" href="https://github.com/sharu725/cards">Download</a>
       </li>
