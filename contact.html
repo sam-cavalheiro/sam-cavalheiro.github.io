@@ -55,7 +55,19 @@ permalink: /contact/
     {% endif %}
     {% if site.curriculum %}
       <li class="contact curriculum">
-        <a target="_blank" href="{{ site.curriculum }}"><i class="fa fa-file-text"></i> Currículo</a>
+        <!-- A ideia é ser um link, mas provisoriamente utilizaremos um
+             link-dropdown só para conseguirmos escolher o idioma. --> 
+        <!-- <a target="_blank" href="{{ site.curriculum }}"><i class="fa fa-file-text"></i> Currículo</a> -->
+        <div class="dropdown show">
+          <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-file-text" aria-hidden="true"></i> Currículo / Resumé <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" target="_blank" href="{{site.curriculum}}">🇧🇷 Currículo (Português)</a>
+            <a class="dropdown-item" target="_blank" href="{{site.curriculum_english}}">🇺🇸 Resumé (English)</a>
+          </div>
+        </div>
       </li>
     {% endif %}
   </ul>

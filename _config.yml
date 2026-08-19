@@ -40,6 +40,7 @@ disqus-shortname: webjeda-demo
 
 #social
 curriculum: /curriculum.pdf
+curriculum_english: /curriculum-en.pdf
 facebook:
 github: http://github.com/sam-cavalheiro
 itchio: https://samcavalheiro.itch.io

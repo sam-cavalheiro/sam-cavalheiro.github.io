@@ -13,7 +13,18 @@
       </div>
       <div class="col-md-4 text-center mt25">
         {% if site.curriculum %}
-        <a target="_blank" class="btn btn-primary btn" style="font-weight: bold;" href="{{site.curriculum}}">Currículo</a>
+        <!-- A ideia é ser um link-botão, mas provisoriamente utilizaremos um
+             link-botão-dropdown só para conseguirmos escolher o idioma. --> 
+        <!-- <a target="_blank" class="btn btn-primary btn" style="font-weight: bold;" href="{{site.curriculum}}">Currículo</a> -->
+        <div class="resume-btn-group">
+          <a type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-weight: bold; color: white;" aria-haspopup="true" aria-expanded="false">
+            Currículo / Resumé
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" target="_blank" href="{{site.curriculum}}">🇧🇷 Currículo (Português)</a>
+            <a class="dropdown-item" target="_blank" href="{{site.curriculum_english}}">🇺🇸 Resumé (English)</a>
+          </div>
+        </div>
         {% endif %}
         {% if site.facebook %}
         <a target="_blank" href="{{site.facebook}}"
