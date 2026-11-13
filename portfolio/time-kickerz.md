@@ -3,6 +3,7 @@ title: "Time KickerZ"
 layout: portfolio
 category: Graduação
 order: 4
+image: /assets/portfolio/time-kickerz-cover.jpg
 media_paths: [ 7VOEw__UyOY, /assets/portfolio/time-kickerz-media-0.png, /assets/portfolio/time-kickerz-media-1.png, /assets/portfolio/time-kickerz-media-2.png, /assets/portfolio/time-kickerz-media-3.png, /assets/portfolio/time-kickerz-media-4.png, /assets/portfolio/time-kickerz-media-5.png ]
 media_thumbnail_paths: [ /assets/portfolio/time-kickerz-media-4.png ]
 role: Programador

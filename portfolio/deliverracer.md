@@ -3,6 +3,7 @@ title: "Deliverracer"
 layout: portfolio
 category: Graduação
 order: 3
+image: /assets/portfolio/deliverracer-cover.jpg
 media_paths: [ vFi3zPKYO5Y, /assets/portfolio/deliverracer-media-0.png, /assets/portfolio/deliverracer-media-1.png, /assets/portfolio/deliverracer-media-2.png, /assets/portfolio/deliverracer-media-3.png, /assets/portfolio/deliverracer-media-4.png ]
 media_thumbnail_paths: [ /assets/portfolio/deliverracer-media-2.png ]
 role: Programador

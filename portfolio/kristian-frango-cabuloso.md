@@ -3,6 +3,7 @@ title: "Kristian: Frango Cabuloso"
 layout: portfolio
 category: Graduação
 order: 0
+image: /assets/portfolio/kristian-frango-cabuloso-cover.png
 media_paths: [ aRbBsfYjupA, /assets/portfolio/kristian-frango-cabuloso-media-0.png, /assets/portfolio/kristian-frango-cabuloso-media-1.png ]
 media_thumbnail_paths: [ /assets/portfolio/kristian-frango-cabuloso-media-0.png ]
 role: Programador
@@ -13,7 +14,6 @@ engine: Unity
 prog_language: C#
 web_pages: [ https://samcavalheiro.itch.io/kristian-frango-cabuloso ]
 web_page_types: [ itch.io ]
-image: /images/image-1.png
 
 description: |
     Jogo de **tiro e plataforma 2D**, cuja o objetivo é eliminar maior leva de zumbis possível.
